@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abdulrhman Alaa</title>
+
+  <!-- favicon -->
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon" />
+  <!-- custom css link -->
+  <link rel="stylesheet" href="./assets/css/style.css" />
+
+  <!-- google font link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&family=Geist:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <!-- Devicons for tech stack icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <!-- Portfolio: no Masonry dependency, pure CSS Grid -->
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <!-- Prevent flash of unstyled theme -->
+  <script>
+    if (localStorage.getItem("theme") === "light") {
+      document.documentElement.classList.add("light-theme");
+    }
+  </script>
+</head>
+
+<body>
+  <script>
+    if (localStorage.getItem("theme") === "light") {
+      document.body.classList.add("light-theme");
+    }
+  </script>
+  <!-- #MAIN -->
+  <main>
+
+    <!-- #SIDEBAR -->
+    <aside class="sidebar" data-sidebar>
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="./assets/images/Avatar4.jpg" alt="Abdulrhman" width="80" />
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Abdulrhman">Abdulrhman Alaa</h1>
+          <p class="title">.NET Backend Developer</p>
+        </div>
+
+
+        <div class="sidebar-utility-btns">
+          <a href="https://github.com/your-repo" target="_blank" class="utility-btn fork-btn">
+            <ion-icon name="git-branch-outline"></ion-icon>
+            <span>Fork & Star</span>
+          </a>
+          <button class="utility-btn theme-btn" data-theme-btn>
+            <ion-icon name="sunny-outline" class="sun-icon"></ion-icon>
+            <ion-icon name="moon-outline" class="moon-icon"></ion-icon>
+          </button>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+              <a href="mailto:abdulr7manx9@gmail.com" class="contact-link">abdulr7manx9@gmail.com</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+              <a href="tel:+201281311191" class="contact-link">+20 1281311191</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Birthday</p>
+              <time datetime="1982-06-23">27 September, 2005</time>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+              <address>Zagazig, Egypt</address>
+            </div>
+
+          </li>
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+          <li class="social-item">
+            <a href="https://www.linkedin.com/in/abdulrhman-3laa" target="_blank" rel="noopener" class="social-link"
+              aria-label="LinkedIn">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://github.com/Abdulr7man-3laa" target="_blank" rel="noopener" class="social-link"
+              aria-label="GitHub">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.youtube.com/@Abdulr7man-3laa" target="_blank" rel="noopener" class="social-link"
+              aria-label="YouTube">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.facebook.com/abdulr7man.3laa" target="_blank" rel="noopener" class="social-link"
+              aria-label="Facebook">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://x.com/abdulr7man_alaa" target="_blank" rel="noopener" class="social-link"
+              aria-label="X (Twitter)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+          </li>
+
+          <li class="social-item" style="position: relative;">
+            <a href="javascript:void(0)" onclick="copyDiscord(this)" title="Copy Discord Username" class="social-link"
+              aria-label="Discord">
+              <ion-icon name="logo-discord"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.instagram.com/abdulr7man_alaa/" target="_blank" rel="noopener" class="social-link"
+              aria-label="Instagram">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- #main-content -->
+    <div class="main-content">
+      <!-- #NAVBAR -->
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li class="navbar-item">
+            <button class="navbar-link active" data-nav-link>About</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Resume</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Portfolio</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>References</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Contact</button>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- #ABOUT -->
+      <article class="about active" data-page="about">
+        <header class="stagger-reveal" style="--reveal-i: 0">
+          <h2 class="h2 article-title">About me</h2>
+        </header>
+
+        <section class="about-text stagger-reveal" style="--reveal-i: 1">
+          <p>
+            A detail-oriented <strong>Computer Science student</strong> passionate about full-stack development and
+            modern software architecture. Skilled in the <strong>.NET ecosystem</strong>, with hands-on experience
+            designing databases, optimizing performance, and implementing secure authentication systems.
+          </p>
+
+          <p>
+            Proven team leadership through DEPI Round 3, where I led a team of 5 to build an award-winning healthcare
+            platform. Dedicated to writing clean, efficient code and continuously improving through collaboration and
+            mentorship.
+          </p>
+        </section>
+
+        <!-- GitHub Graph Section -->
+        <section class="github-section stagger-reveal" style="--reveal-i: 2">
+          <h3 class="section-heading">
+            <span class="section-heading-accent"></span>
+            GitHub Contributions
+          </h3>
+
+          <div class="github-chart-container">
+            <img src="https://ghchart.rshah.org/1ab9e8/Abdulr7man-3laa" alt="GitHub Contributions Graph"
+              class="github-chart-img" />
+          </div>
+          <p class="github-summary-text" id="githubSummaryText">Loading stats...</p>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Spatial Tech Stack -->
+        <div class="spatial-section stagger-reveal" style="--reveal-i: 3; margin-top: 25px; margin-bottom: 25px;">
+          <h3 class="section-heading" style="margin-bottom: 15px;">
+            <span class="section-heading-accent"></span>
+            Tech Stack
+          </h3>
+
+          <!-- Ambient Space Lighting -->
+          <div class="ambient-glow glow-1" style="top: -20%; left: 10%;"></div>
+          <div class="ambient-glow glow-2" style="bottom: -20%; right: 10%;"></div>
+          <div class="ambient-glow glow-3" style="top: 20%; left: 40%;"></div>
+
+          <!-- Icons Container (No Box) -->
+          <div class="tech-stack-showcase" style="position: relative; z-index: 2; padding: 10px;">
+
+            <!-- Row 1 -->
+            <div class="tech-items-row"
+              style="display: flex; flex-wrap: wrap; justify-content: center; gap: 32px 48px; margin-bottom: 40px;">
+              <div class="tech-item" style="color: #60a5fa;">
+                <i class="ph ph-file-code" style="font-size: 42px;"></i>
+                <span style="font-size: 14px; margin-top: 8px; font-weight: 500;">.NET</span>
+              </div>
+              <div class="tech-item" style="color: #c084fc;">
+                <i class="ph ph-hash" style="font-size: 42px;"></i>
+                <span style="font-size: 14px; margin-top: 8px; font-weight: 500;">C#</span>
+              </div>
+              <div class="tech-item" style="color: #fb923c;">
+                <i class="ph ph-list-magnifying-glass" style="font-size: 42px;"></i>
+                <span style="font-size: 14px; margin-top: 8px; font-weight: 500;">LINQ</span>
+              </div>
+              <div class="tech-item" style="color: #facc15;">
+                <i class="ph ph-intersect" style="font-size: 42px;"></i>
+                <span style="font-size: 14px; margin-top: 8px; font-weight: 500;">EF Core</span>
+              </div>
+              <div class="tech-item" style="color: #ef4444;">
+                <i class="ph ph-hard-drives" style="font-size: 42px;"></i>
+                <span style="font-size: 14px; margin-top: 8px; font-weight: 500;">SQL Server</span>
+              </div>
+              <div class="tech-item" style="color: #818cf8;">
+                <i class="ph ph-database" style="font-size: 42px;"></i>
+                <span style="font-size: 14px; margin-top: 8px; font-weight: 500;">PostgreSQL</span>
+              </div>
+              <div class="tech-item" style="color: #22d3ee;">
+                <i class="ph ph-broadcast" style="font-size: 42px;"></i>
+                <span style="font-size: 14px; margin-top: 8px; font-weight: 500;">SignalR</span>
+              </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="tech-items-row"
+              style="display: flex; flex-wrap: wrap; justify-content: center; gap: 32px 48px;">
+              <div class="tech-item" style="color: #93c5fd;">
+                <i class="ph ph-target" style="font-size: 42px;"></i>
+                <span style="font-size: 14px; margin-top: 8px; font-weight: 500;">Clean Arch</span>
+              </div>
+              <div class="tech-item" style="color: #fdba74;">
+                <i class="devicon-postman-plain" style="font-size: 42px;"></i>
+                <span style="font-size: 14px; margin-top: 8px; font-weight: 500;">Postman</span>
+              </div>
+              <div class="tech-item" style="color: #fb7185;">
+                <i class="ph ph-git-branch" style="font-size: 42px;"></i>
+                <span style="font-size: 14px; margin-top: 8px; font-weight: 500;">Git &amp; GitHub</span>
+              </div>
+              <div class="tech-item" style="color: #38bdf8;">
+                <i class="devicon-docker-plain" style="font-size: 42px;"></i>
+                <span style="font-size: 14px; margin-top: 8px; font-weight: 500;">Docker</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Certificates -->
+        <section class="cert-accordion-section stagger-reveal" style="--reveal-i: 4">
+          <h3 class="section-heading">
+            <span class="section-heading-accent"></span>
+            Certificates
+          </h3>
+
+          <div class="cert-carousel-wrap">
+            <ul class="cert-carousel" id="certCarousel">
+
+              <li class="cert-slide" data-cert-img="./assets/images/Certificates/Certificate Lv 1.png"
+                data-cert-title="1st Place ECPC Zagazig University">
+                <div class="cert-slide-top">
+                  <div class="cert-slide-thumb">
+                    <img src="./assets/images/Certificates/Certificate Lv 1.png" alt="1st Place ECPC" loading="lazy"
+                      draggable="false" />
+                  </div>
+                  <h4 class="cert-slide-title">1st Place ECPC Zagazig University</h4>
+                </div>
+                <p class="cert-slide-desc">Achieved first place in the Egyptian Collegiate Programming Contest (ECPC) at
+                  Zagazig...</p>
+              </li>
+
+              <li class="cert-slide" data-cert-img="./assets/images/Certificates/Algorithm Analysis & Design 1 of 1.png"
+                data-cert-title="Algorithm Analysis &amp; Design">
+                <div class="cert-slide-top">
+                  <div class="cert-slide-thumb">
+                    <img src="./assets/images/Certificates/Algorithm Analysis & Design 1 of 1.png" alt="Algorithm Analysis"
+                      loading="lazy" draggable="false" />
+                  </div>
+                  <h4 class="cert-slide-title">Algorithm Analysis &amp; Design</h4>
+                </div>
+                <p class="cert-slide-desc">Completed comprehensive training in algorithm analysis and design principles.
+                  This certification...</p>
+              </li>
+
+              <li class="cert-slide" data-cert-img="./assets/images/Certificates/Git & Github 1 of 1.png"
+                data-cert-title="Git &amp; GitHub">
+                <div class="cert-slide-top">
+                  <div class="cert-slide-thumb">
+                    <img src="./assets/images/Certificates/Git & Github 1 of 1.png" alt="Git & GitHub" loading="lazy"
+                      draggable="false" />
+                  </div>
+                  <h4 class="cert-slide-title">Git &amp; GitHub</h4>
+                </div>
+                <p class="cert-slide-desc">Mastered version control workflows including branching strategies, merge
+                  conflict resolution, and CI/CD fundamentals...</p>
+              </li>
+
+              <li class="cert-slide" data-cert-img="./assets/images/Certificates/SQL Advanced 1 of 1.png"
+                data-cert-title="SQL Advanced">
+                <div class="cert-slide-top">
+                  <div class="cert-slide-thumb">
+                    <img src="./assets/images/Certificates/SQL Advanced 1 of 1.png" alt="SQL Advanced" loading="lazy"
+                      draggable="false" />
+                  </div>
+                  <h4 class="cert-slide-title">SQL Advanced</h4>
+                </div>
+                <p class="cert-slide-desc">Advanced SQL mastery: window functions, CTEs, indexing strategies, stored
+                  procedures, and complex analytical queries...</p>
+              </li>
+
+              <li class="cert-slide" data-cert-img="./assets/images/Certificates/SQL Intermediate 1 of 1.png"
+                data-cert-title="SQL Intermediate">
+                <div class="cert-slide-top">
+                  <div class="cert-slide-thumb">
+                    <img src="./assets/images/Certificates/SQL Intermediate 1 of 1.png" alt="SQL Intermediate" loading="lazy"
+                      draggable="false" />
+                  </div>
+                  <h4 class="cert-slide-title">SQL Intermediate</h4>
+                </div>
+                <p class="cert-slide-desc">Intermediate SQL: complex joins, subqueries, aggregate functions, and
+                  multi-table data filtering...</p>
+              </li>
+
+              <li class="cert-slide" data-cert-img="./assets/images/Certificates/SQL Basic 1 of 1.png" data-cert-title="SQL Basic">
+                <div class="cert-slide-top">
+                  <div class="cert-slide-thumb">
+                    <img src="./assets/images/Certificates/SQL Basic 1 of 1.png" alt="SQL Basic" loading="lazy" draggable="false" />
+                  </div>
+                  <h4 class="cert-slide-title">SQL Basic</h4>
+                </div>
+                <p class="cert-slide-desc">Foundational SQL: SELECT, INSERT, UPDATE, DELETE, table creation, and core
+                  relational database concepts...</p>
+              </li>
+
+            </ul>
+
+            <!-- Scroll progress bar -->
+            <div class="cert-scroll-track">
+              <div class="cert-scroll-thumb" id="certScrollThumb"></div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- Codeforces Section -->
+        <section class="cf-section stagger-reveal" style="--reveal-i: 5">
+          <h3 class="section-heading">
+            <span class="section-heading-accent"></span>
+            Competitive Programming
+          </h3>
+
+          <div class="cf-chart-wrap" style="margin-top: 15px;">
+            <canvas id="cfChart"></canvas>
+          </div>
+
+          <p class="github-summary-text" id="cfSummaryText">Loading stats...</p>
+        </section>
+
+
+
+
+
+      </article>
+
+      <!-- #RESUME -->
+      <article class="resume" data-page="resume">
+
+        <!-- ── Masthead ── -->
+        <div class="resume-masthead stagger-reveal" style="--reveal-i: 0">
+          <div class="resume-masthead-left">
+            <h2 class="h2 article-title">Resume</h2>
+          </div>
+        </div>
+
+        <div class="blueprint-resume-layout">
+
+          <!-- ── Right Column (Experience & Education Timeline) ── -->
+          <div class="resume-right-col" style="width: 100%;">
+
+            <!-- Experience -->
+            <section class="resume-section stagger-reveal" style="--reveal-i: 1">
+              <div class="bp-sec-heading" style="justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <i class="ph-light ph-briefcase" style="font-size: 24px; color: var(--primary-color);"></i>
+                  <h3 class="bp-sec-title">Experience</h3>
+                </div>
+                <a href="./AbdulrhmanCV.pdf" class="btn-resume-dl" download="Abdulrhman_Alaa_CV.pdf"
+                  aria-label="Download CV">
+                  <span class="btn-resume-dl-text">Download CV</span>
+                  <div class="btn-resume-dl-icon">
+                    <ion-icon name="cloud-download-outline"></ion-icon>
+                  </div>
+                </a>
+              </div>
+
+              <div class="bp-timeline">
+                <div class="bp-timeline-line"></div>
+
+                <!-- Exp Item 1 -->
+                <div class="bp-exp-item">
+                  <div class="bp-timeline-node bp-timeline-node--glow"></div>
+                  <div class="bp-exp-card">
+                    <div class="bp-exp-header">
+                      <div class="bp-meta">
+                        <span class="bp-date">Jun 2025 &ndash; Dec 2025</span>
+                        <span class="bp-badge bp-badge--gold"><i class="ph-light ph-medal"
+                            style="margin-right: 4px;"></i> Best Project &middot; DEPI</span>
+                        <span class="bp-badge bp-badge--teal"><i class="ph-light ph-trophy"
+                            style="margin-right: 4px;"></i> 3rd &middot; ZagTech Hackathon</span>
+                      </div>
+                      <span class="bp-type">Full-Time</span>
+                    </div>
+                    <h4 class="bp-role">Team Lead &amp; Backend .NET Engineer</h4>
+                    <span class="bp-company">Digital Egypt Pioneers Initiative (DEPI)</span>
+                    <p class="bp-desc">Led a cross-functional team of 5 over 6 months to architect and deliver
+                      <strong>ShurYan</strong> &mdash; a scalable digital healthcare platform, from concept to fully
+                      deployed production system.
+                    </p>
+                    <ul class="bp-bullets">
+                      <li>Designed Clean Architecture backend &mdash; 33 REST controllers, 100+ endpoints, 47-table SQL
+                        Server database.</li>
+                      <li>Engineered 36 Application Services across 5 distinct role-based portals (Patient, Doctor,
+                        Pharmacy, Lab, Admin).</li>
+                      <li>Implemented JWT + Refresh Token Rotation, Google OAuth 2.0, OTP verification, and RBAC.</li>
+                      <li>Integrated Paymob (payments), Cloudinary (media), MailKit (async email), and SignalR
+                        (real-time).</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Exp Item 2 -->
+                <div class="bp-exp-item">
+                  <div class="bp-timeline-node"></div>
+                  <div class="bp-exp-card">
+                    <div class="bp-exp-header">
+                      <div class="bp-meta">
+                        <span class="bp-date">Dec 2025 &ndash; Present</span>
+                        <span class="bp-badge bp-badge--teal">Active</span>
+                      </div>
+                      <span class="bp-type">Volunteer</span>
+                    </div>
+                    <h4 class="bp-role">.NET Co-Lead</h4>
+                    <span class="bp-company">Zag Eng Community</span>
+                    <p class="bp-desc">Co-deliver structured sessions on core and advanced .NET concepts, reinforcing
+                      learning through hands-on tasks and real-world projects.</p>
+                  </div>
+                </div>
+
+                <!-- Exp Item 3 -->
+                <div class="bp-exp-item">
+                  <div class="bp-timeline-node"></div>
+                  <div class="bp-exp-card">
+                    <div class="bp-exp-header">
+                      <div class="bp-meta">
+                        <span class="bp-date">Feb 2025 &ndash; Present</span>
+                        <span class="bp-badge bp-badge--teal">Active</span>
+                      </div>
+                      <span class="bp-type">Volunteer</span>
+                    </div>
+                    <h4 class="bp-role">Competitive Programming Mentor</h4>
+                    <span class="bp-company">ICPC Zagazig</span>
+                    <p class="bp-desc">Individually mentor students on competitive programming fundamentals, algorithmic
+                      problem-solving, and efficient data structure implementation for ICPC preparation.</p>
+                  </div>
+                </div>
+
+                <!-- Exp Item 4 -->
+                <div class="bp-exp-item">
+                  <div class="bp-timeline-node"></div>
+                  <div class="bp-exp-card">
+                    <div class="bp-exp-header">
+                      <div class="bp-meta">
+                        <span class="bp-date">Sep 2025 &ndash; Oct 2025</span>
+                      </div>
+                      <span class="bp-type">Remote</span>
+                    </div>
+                    <h4 class="bp-role">Backend Developer</h4>
+                    <span class="bp-company">E-Commerce Team Project</span>
+                    <ul class="bp-bullets">
+                      <li>Collaborated in Agile sprints with a 3-developer team, designing RESTful APIs for Products,
+                        Orders, and Users.</li>
+                      <li>Enforced structured Git branching strategy (<code>feat</code>, <code>bug-fix</code>) across
+                        the team.</li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </section>
+
+            <!-- Education -->
+            <section class="resume-section stagger-reveal" style="--reveal-i: 2" style="margin-top: 80px;">
+              <div class="bp-sec-heading">
+                <i class="ph-light ph-graduation-cap" style="font-size: 24px; color: var(--vegas-gold);"></i>
+                <h3 class="bp-sec-title">Education</h3>
+              </div>
+
+              <div class="bp-timeline">
+                <div class="bp-timeline-line"></div>
+
+                <div class="bp-exp-item">
+                  <div class="bp-timeline-node"></div>
+                  <div class="bp-exp-card">
+                    <div class="bp-exp-header">
+                      <div class="bp-meta">
+                        <span class="bp-date">Sep 2023 &ndash; Present</span>
+                        <span class="bp-badge bp-badge--teal">3rd Year</span>
+                        <span class="bp-badge bp-badge--gold" style="margin-left: 8px;">GPA 3.2 / 4.0</span>
+                      </div>
+                      <span class="bp-type">University</span>
+                    </div>
+                    <h4 class="bp-role">B.Sc. Computer Science</h4>
+                    <span class="bp-company">Zagazig University</span>
+                    <p class="bp-desc">Building a strong foundation in data structures, algorithms, software engineering
+                      principles, and distributed systems.</p>
+                  </div>
+                </div>
+
+              </div>
+            </section>
+
+          </div>
+
+          <!-- ── Left Column (Skills Sidebar transformed to bottom row) ── -->
+          <div class="resume-left-col" style="width: 100%;">
+
+            <!-- Technical Skills -->
+            <section class="resume-section stagger-reveal" style="--reveal-i: 3" style="margin-top: 80px;">
+              <div class="bp-sec-heading">
+                <i class="ph-light ph-code" style="font-size: 24px; color: var(--vegas-gold);"></i>
+                <h3 class="bp-sec-title">Skills &amp; Tools</h3>
+              </div>
+
+              <div class="bp-skills-list">
+                <!-- Backend -->
+                <div class="bp-skill-bezel-shell">
+                  <div class="bp-skill-bezel-core">
+                    <span class="bp-skill-label">Backend</span>
+                    <p class="bp-skill-items">ASP.NET Core, C# / .NET 8, EF Core, LINQ, REST APIs, SignalR</p>
+                  </div>
+                </div>
+                <!-- Architecture & Patterns -->
+                <div class="bp-skill-bezel-shell">
+                  <div class="bp-skill-bezel-core">
+                    <span class="bp-skill-label">Architecture &amp; Patterns</span>
+                    <p class="bp-skill-items">Clean Architecture, Repository Pattern, Unit of Work, CQRS</p>
+                  </div>
+                </div>
+                <!-- Auth & Security -->
+                <div class="bp-skill-bezel-shell">
+                  <div class="bp-skill-bezel-core">
+                    <span class="bp-skill-label">Auth &amp; Security</span>
+                    <p class="bp-skill-items">JWT, Refresh Tokens, Google OAuth 2.0, RBAC, OTP</p>
+                  </div>
+                </div>
+                <!-- Database -->
+                <div class="bp-skill-bezel-shell">
+                  <div class="bp-skill-bezel-core">
+                    <span class="bp-skill-label">Database</span>
+                    <p class="bp-skill-items">SQL Server, MySQL, EF Migrations, Query Optimization</p>
+                  </div>
+                </div>
+                <!-- Languages -->
+                <div class="bp-skill-bezel-shell">
+                  <div class="bp-skill-bezel-core">
+                    <span class="bp-skill-label">Languages</span>
+                    <p class="bp-skill-items">C#, C++, Python, Java, JavaScript</p>
+                  </div>
+                </div>
+                <!-- Tools -->
+                <div class="bp-skill-bezel-shell">
+                  <div class="bp-skill-bezel-core">
+                    <span class="bp-skill-label">Tools</span>
+                    <p class="bp-skill-items">Git &amp; GitHub, Postman, Swagger, Visual Studio, VS Code</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+          </div>
+
+        </div>
+        <!-- ── Bottom CTA Strip ── -->
+        <div class="resume-cta-strip stagger-reveal" style="--reveal-i: 6">
+          <p class="resume-cta-text">Ready to work together?</p>
+          <a href="./AbdulrhmanCV.pdf" class="btn-resume-dl btn-resume-dl--strip" download="Abdulrhman_Alaa_CV.pdf"
+            aria-label="Download CV">
+            <span class="btn-resume-dl-text">Download CV</span>
+            <div class="btn-resume-dl-icon"><ion-icon name="cloud-download-outline"></ion-icon></div>
+          </a>
+        </div>
+
+      </article>
+
+      <article class="portfolio" data-page="portfolio">
+
+        <!-- ── Portfolio Header ── -->
+        <header class="pf-header stagger-reveal" style="--reveal-i: 0">
+          <h2 class="h2 article-title">Portfolio</h2>
+          <p class="pf-header-sub">Selected work across backend systems, APIs, and applications.</p>
+        </header>
+
+        <!-- ── Filter Bar ── -->
+        <div class="pf-filter-bar stagger-reveal" style="--reveal-i: 1" role="tablist"
+          aria-label="Filter projects by category">
+          <button class="pf-filter-btn active" data-pf-filter data-pf-value="all" role="tab"
+            aria-selected="true">All</button>
+          <button class="pf-filter-btn" data-pf-filter data-pf-value=".net core" role="tab" aria-selected="false">.NET
+            Core</button>
+          <button class="pf-filter-btn" data-pf-filter data-pf-value="java" role="tab"
+            aria-selected="false">Java</button>
+          <button class="pf-filter-btn" data-pf-filter data-pf-value="c++" role="tab" aria-selected="false">C++</button>
+          <button class="pf-filter-btn" data-pf-filter data-pf-value="python" role="tab" aria-selected="false">Python</button>
+        </div>
+
+        <!-- ── Bento Project Grid ── -->
+        <div class="pf-bento" id="pfBento">
+
+          <!-- ① ShurYan — Featured (wide) -->
+          <article class="pf-card pf-card--featured" data-pf-item data-pf-category=".net core" data-project-id="shuryan"
+            tabindex="0" role="button" aria-label="View ShurYan Healthcare Platform details">
+            <div class="pf-card__img">
+              <img src="./assets/images/Projects/ShurYan/BG1.jpg" alt="ShurYan Healthcare Platform" loading="lazy" />
+              <div class="pf-card__img-overlay" aria-hidden="true">
+                <span class="pf-view-cta">
+                  <span class="pf-view-cta__text">View Project</span>
+                  <span class="pf-view-cta__icon" aria-hidden="true">↗</span>
+                </span>
+              </div>
+            </div>
+            <div class="pf-card__body">
+              <div class="pf-card__meta">
+                <span class="pf-eyebrow">.NET Core + React</span>
+                <span class="pf-badge pf-badge--gold" aria-label="Award: Best Project DEPI">Best Project · DEPI</span>
+              </div>
+              <h3 class="pf-card__title">ShurYan Healthcare Platform</h3>
+              <p class="pf-card__desc">Full-stack digital healthcare ecosystem connecting patients, doctors, pharmacies,
+                and labs — built with Clean Architecture and deployed to production.</p>
+              <div class="pf-tags" aria-label="Technologies used">
+                <span>ASP.NET Core</span>
+                <span>React</span>
+                <span>SQL Server</span>
+                <span>SignalR</span>
+                <span>JWT</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ② E-Commerce API -->
+          <article class="pf-card" data-pf-item data-pf-category=".net core" data-project-id="ecommerce" tabindex="0"
+            role="button" aria-label="View E-Commerce API details">
+            <div class="pf-card__img">
+                   <img src="./assets/images/Projects/Ecommerce/1.png" alt="E-Commerce API" loading="lazy" />
+              <div class="pf-card__img-overlay" aria-hidden="true">
+                <span class="pf-view-cta">
+                  <span class="pf-view-cta__text">View Project</span>
+                  <span class="pf-view-cta__icon" aria-hidden="true">↗</span>
+                </span>
+              </div>
+            </div>
+            <div class="pf-card__body">
+              <span class="pf-eyebrow">.NET Core</span>
+              <h3 class="pf-card__title">E-Commerce API</h3>
+              <p class="pf-card__desc">RESTful API with layered architecture, JWT auth, and EF Core.</p>
+              <div class="pf-tags">
+                <span>ASP.NET</span>
+                <span>EF Core</span>
+                <span>JWT</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ③ Ball Breaker Game -->
+          <article class="pf-card" data-pf-item data-pf-category="java" data-project-id="ballbreaker" tabindex="0"
+            role="button" aria-label="View Ball Breaker Game details">
+            <div class="pf-card__img">
+              <img src="./assets/images/Projects/Ball-Breaker/Start point.png" alt="Ball Breaker arcade game" loading="lazy" />
+              <div class="pf-card__img-overlay" aria-hidden="true">
+                <span class="pf-view-cta">
+                  <span class="pf-view-cta__text">View Project</span>
+                  <span class="pf-view-cta__icon" aria-hidden="true">↗</span>
+                </span>
+              </div>
+            </div>
+            <div class="pf-card__body">
+              <span class="pf-eyebrow">Java</span>
+              <h3 class="pf-card__title">Ball Breaker Game</h3>
+              <p class="pf-card__desc">Arcade-style Brick Breaker with Java 2D graphics, OOP design, and multiple
+                difficulty levels.</p>
+              <div class="pf-tags">
+                <span>Java 2D</span>
+                <span>OOP</span>
+                <span>Game Dev</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ④ Quran Playlist Manager -->
+          <article class="pf-card" data-pf-item data-pf-category="c++" data-project-id="quran-manager" tabindex="0"
+            role="button" aria-label="View Quran Playlist Manager details">
+            <div class="pf-card__img">
+              <img src="./assets/images/Projects/quran_cover.png" alt="Quran Playlist Manager" loading="lazy" />
+              <div class="pf-card__img-overlay" aria-hidden="true">
+                <span class="pf-view-cta">
+                  <span class="pf-view-cta__text">View Project</span>
+                  <span class="pf-view-cta__icon" aria-hidden="true">↗</span>
+                </span>
+              </div>
+            </div>
+            <div class="pf-card__body">
+              <span class="pf-eyebrow">C++</span>
+              <h3 class="pf-card__title">Quran Playlist Manager</h3>
+              <p class="pf-card__desc">CLI tool managing recitation playlists via custom Doubly Linked Lists.</p>
+              <div class="pf-tags">
+                <span>C++</span>
+                <span>Data Structures</span>
+                <span>CLI</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ⑤ NetSec Toolkit -->
+          <article class="pf-card" data-pf-item data-pf-category="python" data-project-id="netsec-toolkit" tabindex="0"
+            role="button" aria-label="View NetSec Toolkit details">
+            <div class="pf-card__img">
+              <img src="./assets/images/Projects/netsec_toolkit_cover.png" alt="NetSec Toolkit" loading="lazy" />
+              <div class="pf-card__img-overlay" aria-hidden="true">
+                <span class="pf-view-cta">
+                  <span class="pf-view-cta__text">View Project</span>
+                  <span class="pf-view-cta__icon" aria-hidden="true">↗</span>
+                </span>
+              </div>
+            </div>
+            <div class="pf-card__body">
+              <span class="pf-eyebrow">Python</span>
+              <h3 class="pf-card__title">NetSec Toolkit</h3>
+              <p class="pf-card__desc">Comprehensive cybersecurity utility for network scanning, packet sniffing, and vulnerability assessment.</p>
+              <div class="pf-tags">
+                <span>Scapy</span>
+                <span>Security</span>
+                <span>Networking</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ⑥ Network Scanner -->
+          <article class="pf-card" data-pf-item data-pf-category="python" data-project-id="network-scanner" tabindex="0"
+            role="button" aria-label="View Network Scanner details">
+            <div class="pf-card__img">
+              <img src="./assets/images/Projects/network_scanner_cover.png" alt="Network Scanner" loading="lazy" />
+              <div class="pf-card__img-overlay" aria-hidden="true">
+                <span class="pf-view-cta">
+                  <span class="pf-view-cta__text">View Project</span>
+                  <span class="pf-view-cta__icon" aria-hidden="true">↗</span>
+                </span>
+              </div>
+            </div>
+            <div class="pf-card__body">
+              <span class="pf-eyebrow">Python</span>
+              <h3 class="pf-card__title">Network Scanner</h3>
+              <p class="pf-card__desc">Advanced network discovery tool utilizing ARP requests to map out devices on a local network.</p>
+              <div class="pf-tags">
+                <span>ARP</span>
+                <span>Discovery</span>
+                <span>Tools</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ⑦ MAC Address Changer -->
+          <article class="pf-card" data-pf-item data-pf-category="python" data-project-id="mac-changer" tabindex="0"
+            role="button" aria-label="View MAC Address Changer details">
+            <div class="pf-card__img">
+              <img src="./assets/images/Projects/mac_changer_cover.png" alt="MAC Address Changer" loading="lazy" />
+              <div class="pf-card__img-overlay" aria-hidden="true">
+                <span class="pf-view-cta">
+                  <span class="pf-view-cta__text">View Project</span>
+                  <span class="pf-view-cta__icon" aria-hidden="true">↗</span>
+                </span>
+              </div>
+            </div>
+            <div class="pf-card__body">
+              <span class="pf-eyebrow">Python</span>
+              <h3 class="pf-card__title">MAC Address Changer</h3>
+              <p class="pf-card__desc">System utility that easily spoof your MAC address using the subprocess module.</p>
+              <div class="pf-tags">
+                <span>Subprocess</span>
+                <span>Spoofing</span>
+                <span>Privacy</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ⑧ Contact Manager -->
+          <article class="pf-card" data-pf-item data-pf-category="c++" data-project-id="contact-manager" tabindex="0"
+            role="button" aria-label="View Contact Manager details">
+            <div class="pf-card__img">
+              <img src="./assets/images/Projects/contact_manager_cover.png" alt="Contact Manager" loading="lazy" />
+              <div class="pf-card__img-overlay" aria-hidden="true">
+                <span class="pf-view-cta">
+                  <span class="pf-view-cta__text">View Project</span>
+                  <span class="pf-view-cta__icon" aria-hidden="true">↗</span>
+                </span>
+              </div>
+            </div>
+            <div class="pf-card__body">
+              <span class="pf-eyebrow">C++</span>
+              <h3 class="pf-card__title">Contact Manager</h3>
+              <p class="pf-card__desc">A C++ system for robust contact management, featuring dynamic storage and file I/O operations.</p>
+              <div class="pf-tags">
+                <span>C++</span>
+                <span>OOP</span>
+                <span>File I/O</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Empty state -->
+          <div class="pf-empty" id="pfEmpty" aria-live="polite" style="display:none">
+            <ion-icon name="folder-open-outline" aria-hidden="true"></ion-icon>
+            <p>No projects in this category yet.</p>
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- #REFERENCES -->
+
+      <article class="references" data-page="references">
+        <header class="stagger-reveal" style="--reveal-i: 0">
+          <h2 class="h2 article-title">References</h2>
+        </header>
+
+        <section class="ref-intro stagger-reveal" style="--reveal-i: 1">
+          <p class="ref-intro-text">A curated personal library of cheat sheets, architecture notes, and quick-references
+            I've collected and created. Click any row to open the PDF.</p>
+        </section>
+
+        <!-- Category Filter -->
+        <section class="ref-filter-section stagger-reveal" style="--reveal-i: 2">
+          <ul class="ref-filter-list">
+            <li class="ref-filter-item"><button class="ref-filter-btn active" data-ref-filter>All</button></li>
+            <li class="ref-filter-item"><button class="ref-filter-btn" data-ref-filter>Algorithms</button></li>
+            <li class="ref-filter-item"><button class="ref-filter-btn" data-ref-filter>.NET</button></li>
+            <li class="ref-filter-item"><button class="ref-filter-btn" data-ref-filter>Databases</button></li>
+            <li class="ref-filter-item"><button class="ref-filter-btn" data-ref-filter>Other</button></li>
+          </ul>
+        </section>
+
+        <!-- Editorial List -->
+        <section class="ref-list stagger-reveal" style="--reveal-i: 3">
+
+          <!-- Row 1 -->
+          <div class="ref-row" data-ref-item data-ref-category="algorithms"
+            data-pdf="./assets/references/algorithms-cheatsheet.pdf" data-ref-title="Algorithms Cheat Sheet"
+            tabindex="0" role="button" aria-label="View Algorithms Cheat Sheet PDF">
+            <span class="ref-row-num" aria-hidden="true">01</span>
+            <div class="ref-row-icon ref-icon-algorithms">
+              <ion-icon name="code-slash-outline"></ion-icon>
+            </div>
+            <div class="ref-row-content">
+              <div class="ref-row-meta">
+                <span class="ref-badge ref-badge-algorithms">Algorithms</span>
+              </div>
+              <h3 class="ref-row-title">Algorithms Cheat Sheet</h3>
+              <p class="ref-row-desc">Big-O complexities, sorting, graph traversal, DP patterns, and common data
+                structures at a glance.</p>
+            </div>
+            <div class="ref-row-cta" aria-hidden="true">
+              <span class="ref-cta-text">View PDF</span>
+              <span class="ref-cta-arrow">→</span>
+            </div>
+            <span class="ref-row-bar" aria-hidden="true"></span>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="ref-row" data-ref-item data-ref-category=".net"
+            data-pdf="./assets/references/dotnet-clean-architecture.pdf" data-ref-title="Clean Architecture in .NET"
+            tabindex="0" role="button" aria-label="View Clean Architecture in .NET PDF">
+            <span class="ref-row-num" aria-hidden="true">02</span>
+            <div class="ref-row-icon ref-icon-dotnet">
+              <ion-icon name="layers-outline"></ion-icon>
+            </div>
+            <div class="ref-row-content">
+              <div class="ref-row-meta">
+                <span class="ref-badge ref-badge-dotnet">.NET</span>
+              </div>
+              <h3 class="ref-row-title">Clean Architecture in .NET</h3>
+              <p class="ref-row-desc">Layer separation (API, Application, Core, Infrastructure), dependency rules, and
+                best practices for ASP.NET Core.</p>
+            </div>
+            <div class="ref-row-cta" aria-hidden="true">
+              <span class="ref-cta-text">View PDF</span>
+              <span class="ref-cta-arrow">→</span>
+            </div>
+            <span class="ref-row-bar" aria-hidden="true"></span>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="ref-row" data-ref-item data-ref-category="databases"
+            data-pdf="./assets/references/sql-reference.pdf" data-ref-title="SQL Reference Guide" tabindex="0"
+            role="button" aria-label="View SQL Reference Guide PDF">
+            <span class="ref-row-num" aria-hidden="true">03</span>
+            <div class="ref-row-icon ref-icon-databases">
+              <ion-icon name="server-outline"></ion-icon>
+            </div>
+            <div class="ref-row-content">
+              <div class="ref-row-meta">
+                <span class="ref-badge ref-badge-databases">Databases</span>
+              </div>
+              <h3 class="ref-row-title">SQL Reference Guide</h3>
+              <p class="ref-row-desc">DDL, DML, joins, subqueries, indexes, stored procedures, and query optimization
+                techniques.</p>
+            </div>
+            <div class="ref-row-cta" aria-hidden="true">
+              <span class="ref-cta-text">View PDF</span>
+              <span class="ref-cta-arrow">→</span>
+            </div>
+            <span class="ref-row-bar" aria-hidden="true"></span>
+          </div>
+
+          <!-- Row 4 -->
+          <div class="ref-row" data-ref-item data-ref-category="other" data-pdf="./assets/references/git-workflow.pdf"
+            data-ref-title="Git Workflow &amp; Branching Strategy" tabindex="0" role="button"
+            aria-label="View Git Workflow &amp; Branching Strategy PDF">
+            <span class="ref-row-num" aria-hidden="true">04</span>
+            <div class="ref-row-icon ref-icon-other">
+              <ion-icon name="git-branch-outline"></ion-icon>
+            </div>
+            <div class="ref-row-content">
+              <div class="ref-row-meta">
+                <span class="ref-badge ref-badge-other">Other</span>
+              </div>
+              <h3 class="ref-row-title">Git Workflow &amp; Branching Strategy</h3>
+              <p class="ref-row-desc">Git Flow, feature branching, tagging releases, conflict resolution, and pull
+                request best practices.</p>
+            </div>
+            <div class="ref-row-cta" aria-hidden="true">
+              <span class="ref-cta-text">View PDF</span>
+              <span class="ref-cta-arrow">→</span>
+            </div>
+            <span class="ref-row-bar" aria-hidden="true"></span>
+          </div>
+
+        </section>
+
+        <!-- Empty state -->
+        <div class="ref-empty" id="refEmpty" style="display: none;">
+          <ion-icon name="folder-open-outline"></ion-icon>
+          <p>No references in this category yet.</p>
+        </div>
+
+      </article>
+
+      <!-- #CONTACT -->
+      <article class="contact" data-page="contact">
+        <header class="stagger-reveal" style="--reveal-i: 0">
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+
+        <section class="contact-intro stagger-reveal" style="--reveal-i: 1">
+          <p class="contact-intro-text">Have a project in mind or just want to say hello? Send a message and I'll get
+            back to you within 24 hours.</p>
+        </section>
+
+        <!-- Info Cards -->
+        <div class="contact-cards stagger-reveal" style="--reveal-i: 2">
+
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            <div class="contact-card-body">
+              <span class="contact-card-label">Email</span>
+              <a href="mailto:abdulrhman.alaa.dev@gmail.com"
+                class="contact-card-value">abdulrhman.alaa.dev@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+            <div class="contact-card-body">
+              <span class="contact-card-label">Phone</span>
+              <a href="tel:+201XXXXXXXXX" class="contact-card-value">+20 1XX XXX XXXX</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+            <div class="contact-card-body">
+              <span class="contact-card-label">Location</span>
+              <span class="contact-card-value">Zagazig, Egypt</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Contact Form -->
+        <section class="contact-form-section stagger-reveal" style="--reveal-i: 3">
+          <form id="contactForm" class="contact-form" novalidate>
+
+            <div class="form-row">
+              <div class="form-group" id="nameGroup">
+                <label for="contactName" class="form-label">Full Name</label>
+                <div class="form-input-wrap">
+                  <input type="text" id="contactName" name="name" class="form-input" placeholder="Abdulrhman Alaa"
+                    autocomplete="name" required />
+                  <span class="form-input-focus-bar"></span>
+                </div>
+                <p class="form-error" id="nameError"></p>
+              </div>
+
+              <div class="form-group" id="emailGroup">
+                <label for="contactEmail" class="form-label">Email Address</label>
+                <div class="form-input-wrap">
+                  <input type="email" id="contactEmail" name="email" class="form-input" placeholder="hello@example.com"
+                    autocomplete="email" required />
+                  <span class="form-input-focus-bar"></span>
+                </div>
+                <p class="form-error" id="emailError"></p>
+              </div>
+            </div>
+
+            <div class="form-group" id="subjectGroup">
+              <label for="contactSubject" class="form-label">Subject</label>
+              <div class="form-input-wrap">
+                <input type="text" id="contactSubject" name="subject" class="form-input"
+                  placeholder="Project collaboration, internship, or just hello…" required />
+                <span class="form-input-focus-bar"></span>
+              </div>
+              <p class="form-error" id="subjectError"></p>
+            </div>
+
+            <div class="form-group" id="messageGroup">
+              <label for="contactMessage" class="form-label">
+                Message
+                <span class="char-counter" id="charCounter">0 / 500</span>
+              </label>
+              <div class="form-input-wrap">
+                <textarea id="contactMessage" name="message" class="form-input form-textarea"
+                  placeholder="Tell me about your project, idea, or question…" rows="5" maxlength="500"
+                  required></textarea>
+                <span class="form-input-focus-bar"></span>
+              </div>
+              <p class="form-error" id="messageError"></p>
+            </div>
+
+            <div class="form-submit-row">
+              <button type="submit" id="contactSubmitBtn" class="contact-submit-btn">
+                <span class="submit-btn-text">
+                  <ion-icon name="send-outline"></ion-icon>
+                  Send Message
+                </span>
+                <span class="submit-btn-loading" aria-hidden="true">
+                  <span class="submit-spinner"></span>
+                  Sending…
+                </span>
+              </button>
+
+              <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+            </div>
+
+          </form>
+        </section>
+
+      </article>
+    </div>
+  </main>
+
+  <!-- PDF Lightbox -->
+  <div class="pdf-lightbox" id="pdfLightbox">
+    <div class="pdf-lightbox-backdrop"></div>
+    <div class="pdf-lightbox-body">
+      <div class="pdf-lightbox-header">
+        <p class="pdf-lightbox-title" id="pdfLightboxTitle"></p>
+        <div class="pdf-lightbox-actions">
+          <a class="pdf-download-btn" id="pdfDownloadBtn" download>
+            <ion-icon name="cloud-download-outline"></ion-icon>
+            <span>Download</span>
+          </a>
+          <button class="pdf-lightbox-close" id="pdfLightboxClose">&times;</button>
+        </div>
+      </div>
+      <iframe class="pdf-lightbox-frame" id="pdfLightboxFrame" src="" title="PDF Viewer"></iframe>
+    </div>
+  </div>
+
+  <!-- Certificate Lightbox -->
+  <div class="cert-lightbox" id="certLightbox">
+    <div class="cert-lightbox-backdrop"></div>
+    <div class="cert-lightbox-body">
+      <button class="cert-lightbox-close" id="certLightboxClose">&times;</button>
+      <img class="cert-lightbox-img" id="certLightboxImg" src="" alt="" />
+      <p class="cert-lightbox-title" id="certLightboxTitle"></p>
+    </div>
+  </div>
+
+  <!-- ── Project Detail Modal ── -->
+  <div class="pf-modal" id="pfModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="pfModalTitle">
+    <div class="pf-modal__backdrop" id="pfModalBackdrop"></div>
+    <div class="pf-modal__panel">
+      <button class="pf-modal__close" id="pfModalClose" aria-label="Close project detail">
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+
+      <div class="pf-modal__grid">
+        <!-- Left: Image Slider -->
+        <div class="pf-modal__slider" id="pfModalSlider">
+          <img class="pf-modal__slide-img" id="pfModalSlideImg" src="" alt="" />
+          <button class="pf-slider__btn pf-slider__btn--prev" id="pfSliderPrev" aria-label="Previous image">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </button>
+          <button class="pf-slider__btn pf-slider__btn--next" id="pfSliderNext" aria-label="Next image">
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </button>
+          <div class="pf-slider__dots" id="pfSliderDots"></div>
+        </div>
+
+        <!-- Right: Project Details -->
+        <div class="pf-modal__body">
+          <div class="pf-modal__meta">
+            <span class="pf-eyebrow" id="pfModalCategory"></span>
+            <span class="pf-badge pf-badge--gold pf-modal__award" id="pfModalAward" style="display:none"></span>
+          </div>
+          <h3 class="pf-modal__title" id="pfModalTitle"></h3>
+          <div class="pf-modal__desc-scroll">
+            <p class="pf-modal__desc" id="pfModalDesc"></p>
+          </div>
+
+          <div class="pf-tags pf-modal__tags" id="pfModalTags"></div>
+
+          <!-- Gallery Group Buttons (shown only if project has galleryGroups) -->
+          <div class="pf-gallery-groups" id="pfGalleryGroups"></div>
+
+          <div class="pf-modal__actions">
+            <a href="#" target="_blank" rel="noopener noreferrer" class="pf-modal__btn pf-modal__btn--primary"
+              id="pfModalLive">
+              <ion-icon name="eye-outline" aria-hidden="true"></ion-icon>
+              <span>Live Demo</span>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="pf-modal__btn pf-modal__btn--secondary"
+              id="pfModalGithub">
+              <ion-icon name="logo-github" aria-hidden="true"></ion-icon>
+              <span>View Source</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- custom js link -->
+  <script src="./assets/js/script.js"></script>
+
+  <!-- ionicon link -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
