@@ -54,3 +54,21 @@ coverage/
 # Misc
 *.tgz
 *.zip
+
+# References concepts
+references/
+
+# Project-specific: Local dev tools & unused files
+AbdulrhmanCV.pdf
+AbdulrhmanCVOld.pdf
+Publish/
+skills-lock.json
+update.js
+package.json
+package-lock.json
+.kilo/
+.agents/
+
+# References JS (only used with references/ page)
+assets/js/references-data.js
+assets/js/references-shell.js

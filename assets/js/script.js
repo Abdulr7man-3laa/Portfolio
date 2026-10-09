@@ -54,6 +54,12 @@ function navigateToPage(target, shouldScroll = true) {
   // Save to localStorage
   localStorage.setItem("activePage", target);
   if (shouldScroll) window.scrollTo(0, 0);
+
+  if (target === "about") {
+    requestAnimationFrame(() => {
+      window.dispatchEvent(new Event("resize"));
+    });
+  }
 }
 
 navigationLinks.forEach((link) => {
@@ -63,8 +69,9 @@ navigationLinks.forEach((link) => {
   });
 });
 
-// Restore page on load without forcing scroll to top
-const savedPage = localStorage.getItem("activePage");
+// Restore page on load (supports URL hash e.g. #resume or saved page)
+const urlHash = window.location.hash.replace('#', '').toLowerCase().trim();
+const savedPage = urlHash || localStorage.getItem("activePage");
 if (savedPage) {
   navigateToPage(savedPage, false);
 }
@@ -124,42 +131,136 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-// ─── Certificate Carousel ───
+// ─── Certificate Carousel & Interactive Slider ───
 (function () {
   const carousel = document.getElementById("certCarousel");
+  const track = document.getElementById("certScrollTrack") || document.querySelector(".cert-scroll-track");
   const thumb = document.getElementById("certScrollThumb");
 
   if (!carousel) return;
 
-  // ── Scroll progress thumb ──
+  let rafId = null;
+
+  // ── Scroll progress thumb sync ──
   function updateThumb() {
-    if (!thumb) return;
-    const max = carousel.scrollWidth - carousel.clientWidth;
+    if (!thumb || !track) return;
+    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+    if (maxScroll <= 0) {
+      track.style.display = "none";
+      return;
+    }
+    track.style.display = "";
+
     const ratio = carousel.clientWidth / carousel.scrollWidth;
-    const thumbW = ratio * 100;
-    const pct = max > 0 ? carousel.scrollLeft / max : 0;
-    const maxTranslate = (100 - thumbW) / ratio;
-    thumb.style.width = thumbW + "%";
-    thumb.style.transform = `translateX(${pct * maxTranslate}%)`;
+    const thumbWidthPercent = Math.max(14, Math.min(50, ratio * 100));
+    thumb.style.width = thumbWidthPercent + "%";
+
+    const trackWidth = track.clientWidth;
+    const thumbWidth = thumb.offsetWidth;
+    const travel = trackWidth - thumbWidth;
+
+    const pct = Math.max(0, Math.min(1, carousel.scrollLeft / maxScroll));
+    thumb.style.transform = `translateX(${pct * travel}px)`;
   }
 
   carousel.addEventListener("scroll", updateThumb, { passive: true });
+  window.addEventListener("resize", updateThumb);
   updateThumb();
+  setTimeout(updateThumb, 350);
 
-  // ── Drag-to-scroll + click — using Pointer Events API ──
-  let isDragging = false;
+  // ── 1. Slider Bar Drag & Move (mouse / touch on track & thumb) ──
+  if (track && thumb) {
+    let isSliderDragging = false;
+    let sliderStartX = 0;
+    let sliderStartScroll = 0;
+
+    track.addEventListener("pointerdown", (e) => {
+      if (e.button !== 0) return; // left click only
+      cancelAnimationFrame(rafId); // Stop any running carousel momentum
+
+      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+      if (maxScroll <= 0) return;
+
+      const trackRect = track.getBoundingClientRect();
+      const thumbRect = thumb.getBoundingClientRect();
+      const travel = trackRect.width - thumbRect.width;
+      if (travel <= 0) return;
+
+      const clickX = e.clientX;
+
+      if (clickX >= thumbRect.left && clickX <= thumbRect.right) {
+        // Direct click on thumb: start dragging
+        isSliderDragging = true;
+        sliderStartX = clickX;
+        sliderStartScroll = carousel.scrollLeft;
+      } else {
+        // Clicked on track: jump thumb center to click position
+        const targetThumbLeft = Math.max(0, Math.min(travel, clickX - trackRect.left - thumbRect.width / 2));
+        const targetPct = targetThumbLeft / travel;
+        carousel.scrollLeft = targetPct * maxScroll;
+        updateThumb();
+
+        // And allow immediate drag from this position
+        isSliderDragging = true;
+        sliderStartX = clickX;
+        sliderStartScroll = carousel.scrollLeft;
+      }
+
+      thumb.classList.add("is-dragging");
+      track.setPointerCapture(e.pointerId);
+      e.preventDefault();
+    });
+
+    track.addEventListener("pointermove", (e) => {
+      if (!isSliderDragging || !track.hasPointerCapture(e.pointerId)) return;
+      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+      const travel = track.clientWidth - thumb.offsetWidth;
+      if (travel <= 0) return;
+
+      const dx = e.clientX - sliderStartX;
+      const dScroll = (dx / travel) * maxScroll;
+      carousel.scrollLeft = Math.max(0, Math.min(maxScroll, sliderStartScroll + dScroll));
+    });
+
+    function finishSliderDrag(e) {
+      if (isSliderDragging) {
+        isSliderDragging = false;
+        thumb.classList.remove("is-dragging");
+        if (track.hasPointerCapture(e.pointerId)) {
+          track.releasePointerCapture(e.pointerId);
+        }
+      }
+    }
+
+    track.addEventListener("pointerup", finishSliderDrag);
+    track.addEventListener("pointercancel", finishSliderDrag);
+
+    // Keyboard support for scrollbar track
+    track.addEventListener("keydown", (e) => {
+      const step = 80;
+      if (e.key === "ArrowLeft") {
+        carousel.scrollBy({ left: -step, behavior: "smooth" });
+        e.preventDefault();
+      } else if (e.key === "ArrowRight") {
+        carousel.scrollBy({ left: step, behavior: "smooth" });
+        e.preventDefault();
+      }
+    });
+  }
+
+  // ── 2. Carousel Drag-to-scroll + click (drag & move on cards directly) ──
+  let isCarouselDragging = false;
   let startX = 0;
   let startScroll = 0;
   let lastX = 0;
   let velocity = 0;
-  let rafId = null;
-  let pointerDownTarget = null; // capture target before is-dragging blocks children
+  let pointerDownTarget = null;
 
   carousel.addEventListener("pointerdown", (e) => {
-    if (e.button !== 0) return;             // left click only
+    if (e.button !== 0) return; // left click only
     cancelAnimationFrame(rafId);
-    isDragging = false;
-    pointerDownTarget = e.target;           // save BEFORE is-dragging disables children
+    isCarouselDragging = false;
+    pointerDownTarget = e.target;
     startX = e.clientX;
     lastX = e.clientX;
     startScroll = carousel.scrollLeft;
@@ -171,7 +272,7 @@ document.addEventListener("keydown", (e) => {
   carousel.addEventListener("pointermove", (e) => {
     if (!carousel.hasPointerCapture(e.pointerId)) return;
     const dx = e.clientX - startX;
-    if (Math.abs(dx) > 6) isDragging = true; // only a real drag if moved >6px
+    if (Math.abs(dx) > 6) isCarouselDragging = true;
     velocity = e.clientX - lastX;
     lastX = e.clientX;
     carousel.scrollLeft = startScroll - dx;
@@ -182,8 +283,8 @@ document.addEventListener("keydown", (e) => {
     carousel.releasePointerCapture(e.pointerId);
     carousel.classList.remove("is-dragging");
 
-    if (!isDragging) {
-      // True click — use the saved target (e.target is carousel due to pointer-events:none on children)
+    if (!isCarouselDragging) {
+      // Clean click — open certificate lightbox
       const slide = pointerDownTarget?.closest(".cert-slide");
       if (slide) {
         const imgSrc = slide.dataset.certImg;
@@ -191,16 +292,16 @@ document.addEventListener("keydown", (e) => {
         if (imgSrc && title) openCertLightbox(imgSrc, title);
       }
     } else {
-      // Release with momentum coast
+      // Drag released — coast with momentum
       momentum();
     }
 
-    isDragging = false;
+    isCarouselDragging = false;
   });
 
   carousel.addEventListener("pointercancel", () => {
     carousel.classList.remove("is-dragging");
-    isDragging = false;
+    isCarouselDragging = false;
   });
 
   function momentum() {
@@ -215,6 +316,23 @@ document.addEventListener("keydown", (e) => {
 
 // ─── Portfolio Data & Logic ───
 const projectsData = {
+  "planora": {
+    title: "Planora — Geotechnical Site Intelligence",
+    category: ".NET Core + Angular",
+    award: "Co-Founder · Live",
+    description: "Planora turns raw geospatial data into geotechnical site intelligence in hours instead of weeks. Draw a parcel on the map or upload GeoJSON, and the platform returns terrain and topography, soil composition, bearing capacity, flood and seismic risk, and an optimal borehole plan as a professional PDF report. I architected the full backend on Clean Architecture with CQRS/MediatR, using SignalR for live job-status streaming, Hangfire to orchestrate long-running AI analysis pipelines, and PostGIS for spatial parcel queries — cutting traditional site investigation cycles by up to 60%.",
+    thumbnail: "./assets/images/Projects/Planora/1-hero.png",
+    defaultImage: "./assets/images/Projects/Planora/1-hero.png",
+    images: [
+      "./assets/images/Projects/Planora/1-hero.png",
+      "./assets/images/Projects/Planora/2-how-it-works.png",
+      "./assets/images/Projects/Planora/3-features.png",
+      "./assets/images/Projects/Planora/4-cta.png"
+    ],
+    tags: ["ASP.NET Core", "Clean Architecture", "CQRS / MediatR", "SignalR", "Hangfire", "PostgreSQL", "PostGIS", "Redis"],
+    liveLink: "https://planora-aaw.pages.dev/home",
+    githubLink: "https://github.com/Planora-ai-AYAIR/core"
+  },
   "shuryan": {
     title: "ShurYan Healthcare Platform",
     category: ".NET Core + React",
@@ -242,8 +360,8 @@ const projectsData = {
       }
     ],
     tags: ["ASP.NET Core", "React", "SQL Server", "Clean Architecture", "JWT", "SignalR"],
-    liveLink: "#",
-    githubLink: "#"
+    liveLink: "https://shuryan-healthcare.netlify.app/",
+    githubLink: "https://github.com/ShurYan-Health-Care/ShurYan-Backend"
   },
   "ecommerce": {
     title: "E-Commerce API",
@@ -590,8 +708,18 @@ const projectsData = {
 // ─── Codeforces API ───
 const CF_HANDLE = "BoDa_Alaa";
 let cachedRatingHistory = null;
+try {
+  const savedHistory = localStorage.getItem("cf_rating_history");
+  if (savedHistory) {
+    cachedRatingHistory = JSON.parse(savedHistory);
+  }
+} catch (e) {}
 
 async function fetchCodeforcesData() {
+  if (cachedRatingHistory) {
+    drawRatingChart("cfChart", cachedRatingHistory);
+  }
+
   try {
     const [userRes, ratingRes] = await Promise.all([
       fetch("https://codeforces.com/api/user.info?handles=" + CF_HANDLE),
@@ -607,6 +735,9 @@ async function fetchCodeforcesData() {
 
       if (ratingData.status === "OK") {
         cachedRatingHistory = ratingData.result;
+        try {
+          localStorage.setItem("cf_rating_history", JSON.stringify(ratingData.result));
+        } catch (e) {}
         contestsCount = ratingData.result.length;
         drawRatingChart("cfChart", ratingData.result);
       }
@@ -671,6 +802,7 @@ function drawRatingChart(canvasId, ratingData) {
   const canvas = document.getElementById(canvasId);
   if (!canvas || !ratingData || ratingData.length === 0) return;
 
+  const isLight = document.body.classList.contains("light-theme");
   const ctx = canvas.getContext("2d");
   const dpr = window.devicePixelRatio || 1;
 
@@ -701,11 +833,18 @@ function drawRatingChart(canvasId, ratingData) {
   ctx.clearRect(0, 0, w, h);
 
   // Rating tier bands (very subtle)
-  const tiers = [
-    { lo: 0, hi: 1200, color: "rgba(128,128,128,0.04)" },
-    { lo: 1200, hi: 1400, color: "rgba(0,128,0,0.04)" },
-    { lo: 1400, hi: 1600, color: "rgba(3,168,158,0.04)" },
-  ];
+  const tiers = isLight
+    ? [
+        { lo: 0, hi: 1200, color: "rgba(100, 116, 139, 0.03)" },
+        { lo: 1200, hi: 1400, color: "rgba(16, 185, 129, 0.04)" },
+        { lo: 1400, hi: 1600, color: "rgba(2, 132, 199, 0.04)" },
+      ]
+    : [
+        { lo: 0, hi: 1200, color: "rgba(128,128,128,0.04)" },
+        { lo: 1200, hi: 1400, color: "rgba(0,128,0,0.04)" },
+        { lo: 1400, hi: 1600, color: "rgba(3,168,158,0.04)" },
+      ];
+
   tiers.forEach((t) => {
     if (t.lo >= maxR) return;
     const y1 = yPos(Math.min(t.hi, maxR));
@@ -719,22 +858,27 @@ function drawRatingChart(canvasId, ratingData) {
   ctx.textBaseline = "middle";
   for (let r = 0; r <= maxR; r += 200) {
     const y = yPos(r);
-    ctx.strokeStyle = "rgba(255,255,255,0.05)";
+    ctx.strokeStyle = isLight ? "rgba(0, 0, 0, 0.06)" : "rgba(255,255,255,0.05)";
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(pad.left, y);
     ctx.lineTo(w - pad.right, y);
     ctx.stroke();
 
-    ctx.fillStyle = "rgba(255,255,255,0.25)";
+    ctx.fillStyle = isLight ? "rgba(71, 85, 105, 0.65)" : "rgba(255,255,255,0.25)";
     ctx.font = "11px Outfit, sans-serif";
     ctx.fillText(r.toString(), pad.left - 10, y);
   }
 
   // Gradient fill under curve
   const grad = ctx.createLinearGradient(0, pad.top, 0, h - pad.bottom);
-  grad.addColorStop(0, "rgba(26, 185, 232, 0.10)");
-  grad.addColorStop(1, "rgba(224, 184, 76, 0)");
+  if (isLight) {
+    grad.addColorStop(0, "rgba(2, 132, 199, 0.12)");
+    grad.addColorStop(1, "rgba(2, 132, 199, 0)");
+  } else {
+    grad.addColorStop(0, "rgba(26, 185, 232, 0.10)");
+    grad.addColorStop(1, "rgba(224, 184, 76, 0)");
+  }
 
   ctx.beginPath();
   ratingData.forEach((d, i) => {
@@ -751,7 +895,7 @@ function drawRatingChart(canvasId, ratingData) {
 
   // Rating line
   ctx.beginPath();
-  ctx.strokeStyle = "#1ab9e8";
+  ctx.strokeStyle = isLight ? "#0284c7" : "#1ab9e8";
   ctx.lineWidth = 2.5;
   ctx.lineJoin = "round";
   ctx.lineCap = "round";
@@ -771,26 +915,25 @@ function drawRatingChart(canvasId, ratingData) {
     // Soft glow
     ctx.beginPath();
     ctx.arc(x, y, 7, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(26, 185, 232, 0.08)";
+    ctx.fillStyle = isLight ? "rgba(2, 132, 199, 0.15)" : "rgba(26, 185, 232, 0.08)";
     ctx.fill();
 
     // Dot
     ctx.beginPath();
     ctx.arc(x, y, 3.5, 0, Math.PI * 2);
-    ctx.fillStyle = "#1ab9e8";
+    ctx.fillStyle = isLight ? "#0284c7" : "#1ab9e8";
     ctx.fill();
-    ctx.strokeStyle = "rgba(30, 30, 30, 0.9)";
-    ctx.lineWidth = 1.5;
+    ctx.strokeStyle = isLight ? "#ffffff" : "rgba(30, 30, 30, 0.9)";
+    ctx.lineWidth = 1.8;
     ctx.stroke();
   });
 
   // X-axis labels
-  ctx.fillStyle = "rgba(255,255,255,0.28)";
+  ctx.fillStyle = isLight ? "rgba(71, 85, 105, 0.70)" : "rgba(255,255,255,0.28)";
   ctx.font = "10px Outfit, sans-serif";
   ctx.textAlign = "center";
   ctx.textBaseline = "top";
   ratingData.forEach((d, i) => {
-    // Show every label if few contests, or skip some if many
     if (ratingData.length <= 15 || i % 2 === 0 || i === ratingData.length - 1) {
       ctx.fillText("#" + (i + 1), xPos(i), h - pad.bottom + 10);
     }
@@ -910,139 +1053,7 @@ window.addEventListener("resize", () => {
   });
 })();
 
-// ─── Contact Form ───
-(function () {
-  const form = document.getElementById("contactForm");
-  const submitBtn = document.getElementById("contactSubmitBtn");
-  const formStatus = document.getElementById("formStatus");
-  const textarea = document.getElementById("contactMessage");
-  const counter = document.getElementById("charCounter");
 
-  if (!form) return;
-
-  // Character counter
-  if (textarea && counter) {
-    textarea.addEventListener("input", () => {
-      const len = textarea.value.length;
-      const max = parseInt(textarea.getAttribute("maxlength"), 10) || 500;
-      counter.textContent = len + "\u2009/\u2009" + max;
-      counter.classList.toggle("near-limit", len >= max * 0.8 && len < max);
-      counter.classList.toggle("at-limit", len >= max);
-    });
-  }
-
-  // Field validation helpers
-  function validateField(input, errorId, rules) {
-    const group = input.closest(".form-group");
-    const errorEl = document.getElementById(errorId);
-    let message = "";
-
-    for (const rule of rules) {
-      if (!rule.test(input.value)) { message = rule.message; break; }
-    }
-
-    if (errorEl) errorEl.textContent = message;
-    group.classList.toggle("has-error", !!message);
-    group.classList.toggle("is-valid", !message && input.value.trim() !== "");
-    return !message;
-  }
-
-  const fields = [
-    {
-      id: "contactName", errorId: "nameError",
-      rules: [
-        { test: (v) => v.trim() !== "", message: "Please enter your name." },
-        { test: (v) => v.trim().length >= 2, message: "Name must be at least 2 characters." },
-      ],
-    },
-    {
-      id: "contactEmail", errorId: "emailError",
-      rules: [
-        { test: (v) => v.trim() !== "", message: "Please enter your email address." },
-        { test: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()), message: "Please enter a valid email address." },
-      ],
-    },
-    {
-      id: "contactSubject", errorId: "subjectError",
-      rules: [
-        { test: (v) => v.trim() !== "", message: "Please enter a subject." },
-      ],
-    },
-    {
-      id: "contactMessage", errorId: "messageError",
-      rules: [
-        { test: (v) => v.trim() !== "", message: "Please write your message." },
-        { test: (v) => v.trim().length >= 10, message: "Message must be at least 10 characters." },
-      ],
-    },
-  ];
-
-  // Validate on blur
-  fields.forEach(({ id, errorId, rules }) => {
-    const input = document.getElementById(id);
-    if (input) {
-      input.addEventListener("blur", () => validateField(input, errorId, rules));
-    }
-  });
-
-  // Submit handler
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    // Validate all
-    let allValid = true;
-    fields.forEach(({ id, errorId, rules }) => {
-      const input = document.getElementById(id);
-      if (input && !validateField(input, errorId, rules)) allValid = false;
-    });
-
-    if (!allValid) return;
-
-    // Loading state
-    submitBtn.classList.add("is-loading");
-    submitBtn.disabled = true;
-    if (formStatus) { formStatus.textContent = ""; formStatus.className = "form-status"; }
-
-    // Collect values
-    const name = document.getElementById("contactName").value.trim();
-    const email = document.getElementById("contactEmail").value.trim();
-    const subject = document.getElementById("contactSubject").value.trim();
-    const message = document.getElementById("contactMessage").value.trim();
-
-    // Simulate send with mailto fallback after brief delay
-    setTimeout(() => {
-      submitBtn.classList.remove("is-loading");
-      submitBtn.disabled = false;
-
-      try {
-        const body = encodeURIComponent(
-          "From: " + name + " <" + email + ">\n\n" + message
-        );
-        window.location.href =
-          "mailto:abdulrhman.alaa.dev@gmail.com" +
-          "?subject=" + encodeURIComponent(subject) +
-          "&body=" + body;
-
-        if (formStatus) {
-          formStatus.textContent = "\u2714 Message prepared \u2014 your email client will open.";
-          formStatus.className = "form-status success";
-        }
-        form.reset();
-        if (counter) counter.textContent = "0\u2009/\u2009500";
-        fields.forEach(({ id }) => {
-          const g = document.getElementById(id)?.closest(".form-group");
-          if (g) { g.classList.remove("has-error", "is-valid"); }
-        });
-
-      } catch (_) {
-        if (formStatus) {
-          formStatus.textContent = "\u26A0 Something went wrong. Try emailing directly.";
-          formStatus.className = "form-status error";
-        }
-      }
-    }, 1500);
-  });
-})();
 
 // ─── Resume counter-up animation ───
 (function () {
@@ -1116,26 +1127,41 @@ window.copyDiscord = function (btn) {
 // Fetch GitHub Stats
 (async function fetchGithubStats() {
   const username = "Abdulr7man-3laa";
-  try {
-    const apiRes = await fetch(`https://api.github.com/users/${username}`);
-    const apiData = await apiRes.json();
-    const reposCount = apiData.public_repos !== undefined ? apiData.public_repos : "—";
+  const summaryElem = document.getElementById('githubSummaryText');
 
-    const contRes = await fetch(`https://github-contributions-api.deno.dev/${username}.json`);
-    const contData = await contRes.json();
+  const getJSON = (url) => fetch(url, { headers: { Accept: 'application/json' } })
+    .then((res) => { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); });
 
-    const summaryElem = document.getElementById('githubSummaryText');
-    if (summaryElem) {
-      if (contData.totalContributions !== undefined) {
-        summaryElem.innerHTML = `<strong>${contData.totalContributions}</strong> contributions in the last year &middot; <strong>${reposCount}</strong> public repos`;
-      } else {
-        summaryElem.innerText = "GitHub stats loaded.";
-      }
+  // Fetch independently so one failing source never blanks the whole line.
+  const [reposRes, contRes] = await Promise.allSettled([
+    getJSON(`https://api.github.com/users/${username}`),
+    getJSON(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`)
+  ]);
+
+  const repos = reposRes.status === 'fulfilled' && reposRes.value.public_repos !== undefined
+    ? reposRes.value.public_repos
+    : null;
+
+  let contributions = null;
+  if (contRes.status === 'fulfilled' && contRes.value) {
+    const data = contRes.value;
+    if (data.total && data.total.lastYear !== undefined) {
+      contributions = data.total.lastYear;
+    } else if (Array.isArray(data.contributions)) {
+      contributions = data.contributions.reduce((sum, c) => sum + (c.count || 0), 0);
     }
-  } catch (error) {
-    console.error("Error fetching GitHub stats:", error);
-    const summaryElem = document.getElementById('githubSummaryText');
-    if (summaryElem) summaryElem.innerText = "GitHub stats unavailable.";
+  }
+
+  if (!summaryElem) return;
+
+  if (contributions !== null && repos !== null) {
+    summaryElem.innerHTML = `<strong>${contributions}</strong> contributions in the last year &middot; <strong>${repos}</strong> public repos`;
+  } else if (contributions !== null) {
+    summaryElem.innerHTML = `<strong>${contributions}</strong> contributions in the last year`;
+  } else if (repos !== null) {
+    summaryElem.innerHTML = `<strong>${repos}</strong> public repos on GitHub`;
+  } else {
+    summaryElem.innerText = "GitHub stats unavailable.";
   }
 })();
 

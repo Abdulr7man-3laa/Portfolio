@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <filter id="ca-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <!-- Concentric Rings of Uncle Bob's Clean Architecture -->
+  <!-- Layer 1: Frameworks & Drivers (Blue) -->
+  <circle cx="64" cy="64" r="58" fill="#2563EB" filter="url(#ca-shadow)"/>
+  <circle cx="64" cy="64" r="58" stroke="#1D4ED8" stroke-width="2" fill="none"/>
+  
+  <!-- Layer 2: Interface Adapters (Green) -->
+  <circle cx="64" cy="64" r="44" fill="#10B981"/>
+  <circle cx="64" cy="64" r="44" stroke="#059669" stroke-width="2" fill="none"/>
+  
+  <!-- Layer 3: Application Business Rules (Red/Coral) -->
+  <circle cx="64" cy="64" r="30" fill="#EF4444"/>
+  <circle cx="64" cy="64" r="30" stroke="#DC2626" stroke-width="2" fill="none"/>
+  
+  <!-- Layer 4: Enterprise Business Rules / Entities (Amber/Gold) -->
+  <circle cx="64" cy="64" r="16" fill="#F59E0B"/>
+  <circle cx="64" cy="64" r="16" stroke="#D97706" stroke-width="2" fill="none"/>
+
+  <!-- Core Isometric Domain Cube Symbol -->
+  <g transform="translate(64, 64) scale(0.9) translate(-64, -64)">
+    <polygon points="64,54 73,59.2 64,64.4 55,59.2" fill="#FFFFFF"/>
+    <polygon points="55,59.2 64,64.4 64,74 55,68.8" fill="#E5E7EB"/>
+    <polygon points="73,59.2 64,64.4 64,74 73,68.8" fill="#D1D5DB"/>
+  </g>
+</svg>

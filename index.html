@@ -10,7 +10,7 @@
   <!-- favicon -->
   <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon" />
   <!-- custom css link -->
-  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/style.css?v=4.7" />
 
   <!-- google font link -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -27,7 +27,7 @@
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <!-- Prevent flash of unstyled theme -->
   <script>
-    if (localStorage.getItem("theme") === "light") {
+    if (localStorage.getItem("theme") === "light" || new URLSearchParams(window.location.search).get("theme") === "light") {
       document.documentElement.classList.add("light-theme");
     }
   </script>
@@ -35,7 +35,7 @@
 
 <body>
   <script>
-    if (localStorage.getItem("theme") === "light") {
+    if (localStorage.getItem("theme") === "light" || new URLSearchParams(window.location.search).get("theme") === "light") {
       document.body.classList.add("light-theme");
     }
   </script>
@@ -46,18 +46,25 @@
     <aside class="sidebar" data-sidebar>
       <div class="sidebar-info">
 
-        <figure class="avatar-box">
-          <img src="./assets/images/Avatar4.jpg" alt="Abdulrhman" width="80" />
-        </figure>
+        <div class="avatar-container">
+          <div class="sidebar-status" title="Open to backend internships &amp; junior .NET roles">
+            <span class="status-dot"></span>
+            <span class="status-text">Available for Work</span>
+          </div>
+
+          <figure class="avatar-box">
+            <img src="./assets/images/Avatar4.jpg" alt="Abdulrhman" width="80" />
+          </figure>
+        </div>
 
         <div class="info-content">
           <h1 class="name" title="Abdulrhman">Abdulrhman Alaa</h1>
-          <p class="title">.NET Backend Developer</p>
+          <p class="title">Backend .NET Engineer</p>
         </div>
 
 
         <div class="sidebar-utility-btns">
-          <a href="https://github.com/your-repo" target="_blank" class="utility-btn fork-btn">
+          <a href="https://github.com/Abdulr7man-3laa/Portfolio" target="_blank" rel="noopener" class="utility-btn fork-btn">
             <ion-icon name="git-branch-outline"></ion-icon>
             <span>Fork & Star</span>
           </a>
@@ -112,7 +119,7 @@
 
             <div class="contact-info">
               <p class="contact-title">Birthday</p>
-              <time datetime="1982-06-23">27 September, 2005</time>
+              <time datetime="2005-09-27">27 September, 2005</time>
             </div>
 
           </li>
@@ -210,9 +217,6 @@
             <button class="navbar-link" data-nav-link>References</button>
           </li>
 
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
-          </li>
         </ul>
       </nav>
 
@@ -224,16 +228,14 @@
 
         <section class="about-text stagger-reveal" style="--reveal-i: 1">
           <p>
-            A detail-oriented <strong>Computer Science student</strong> passionate about full-stack development and
-            modern software architecture. Skilled in the <strong>.NET ecosystem</strong>, with hands-on experience
-            designing databases, optimizing performance, and implementing secure authentication systems.
+            I'm Abdulrhman &mdash; a <strong>Backend .NET Engineer</strong> focused on building scalable, reliable APIs and real-time services. My experience spans structuring applications with <strong>Clean Architecture</strong> and <strong>CQRS (MediatR)</strong>, building real-time communication with <strong>SignalR</strong>, and optimizing data access with <strong>Redis caching</strong>. In production, I've worked on backend challenges involving <strong>concurrency control</strong>, secure authentication, background processing with <strong>Hangfire</strong>, and third-party integrations such as <strong>Paymob</strong> with cryptographically verified webhooks.
           </p>
 
           <p>
-            Proven team leadership through DEPI Round 3, where I led a team of 5 to build an award-winning healthcare
-            platform. Dedicated to writing clean, efficient code and continuously improving through collaboration and
-            mentorship.
+            Alongside leading teams on production projects, I have a competitive programming background (<strong>ECPC</strong>) that shaped how I think about algorithms, edge cases, and writing performant code.
           </p>
+
+
         </section>
 
         <!-- GitHub Graph Section -->
@@ -274,63 +276,61 @@
           <div class="ambient-glow glow-2" style="bottom: -20%; right: 10%;"></div>
           <div class="ambient-glow glow-3" style="top: 20%; left: 40%;"></div>
 
-          <!-- Icons Container (No Box) -->
-          <div class="tech-stack-showcase" style="position: relative; z-index: 2; padding: 10px;">
-
-            <!-- Row 1 -->
-            <div class="tech-items-row"
-              style="display: flex; flex-wrap: wrap; justify-content: center; gap: 32px 48px; margin-bottom: 40px;">
-              <div class="tech-item" style="color: #60a5fa;">
-                <i class="ph ph-file-code" style="font-size: 42px;"></i>
-                <span style="font-size: 14px; margin-top: 8px; font-weight: 500;">.NET</span>
+          <!-- Icons Container (Zigzag: 7 top, 5 bottom) -->
+          <div class="tech-stack-showcase">
+            <div class="tech-items-row tech-row-1">
+              <div class="tech-item" style="--brand-glow: rgba(81, 43, 212, 0.55);">
+                <img src="./assets/images/tech/dotnet.svg" alt=".NET" class="tech-icon-img" width="44" height="44" loading="lazy" />
+                <span>.NET</span>
               </div>
-              <div class="tech-item" style="color: #c084fc;">
-                <i class="ph ph-hash" style="font-size: 42px;"></i>
-                <span style="font-size: 14px; margin-top: 8px; font-weight: 500;">C#</span>
+              <div class="tech-item" style="--brand-glow: rgba(155, 79, 150, 0.55);">
+                <img src="./assets/images/tech/csharp.svg" alt="C#" class="tech-icon-img" width="44" height="44" loading="lazy" />
+                <span>C#</span>
               </div>
-              <div class="tech-item" style="color: #fb923c;">
-                <i class="ph ph-list-magnifying-glass" style="font-size: 42px;"></i>
-                <span style="font-size: 14px; margin-top: 8px; font-weight: 500;">LINQ</span>
+              <div class="tech-item" style="--brand-glow: rgba(107, 53, 216, 0.55);">
+                <img src="./assets/images/tech/linq.svg" alt="LINQ" class="tech-icon-img" width="44" height="44" loading="lazy" />
+                <span>LINQ</span>
               </div>
-              <div class="tech-item" style="color: #facc15;">
-                <i class="ph ph-intersect" style="font-size: 42px;"></i>
-                <span style="font-size: 14px; margin-top: 8px; font-weight: 500;">EF Core</span>
+              <div class="tech-item" style="--brand-glow: rgba(81, 43, 212, 0.55);">
+                <img src="./assets/images/tech/efcore.svg" alt="EF Core" class="tech-icon-img" width="44" height="44" loading="lazy" />
+                <span>EF Core</span>
               </div>
-              <div class="tech-item" style="color: #ef4444;">
-                <i class="ph ph-hard-drives" style="font-size: 42px;"></i>
-                <span style="font-size: 14px; margin-top: 8px; font-weight: 500;">SQL Server</span>
+              <div class="tech-item" style="--brand-glow: rgba(238, 53, 44, 0.5);">
+                <img src="./assets/images/tech/sqlserver.svg" alt="SQL Server" class="tech-icon-img" width="44" height="44" loading="lazy" />
+                <span>SQL Server</span>
               </div>
-              <div class="tech-item" style="color: #818cf8;">
-                <i class="ph ph-database" style="font-size: 42px;"></i>
-                <span style="font-size: 14px; margin-top: 8px; font-weight: 500;">PostgreSQL</span>
+              <div class="tech-item" style="--brand-glow: rgba(51, 103, 145, 0.55);">
+                <img src="./assets/images/tech/postgresql.svg" alt="PostgreSQL" class="tech-icon-img" width="44" height="44" loading="lazy" />
+                <span>PostgreSQL</span>
               </div>
-              <div class="tech-item" style="color: #22d3ee;">
-                <i class="ph ph-broadcast" style="font-size: 42px;"></i>
-                <span style="font-size: 14px; margin-top: 8px; font-weight: 500;">SignalR</span>
+              <div class="tech-item" style="--brand-glow: rgba(0, 120, 212, 0.55);">
+                <img src="./assets/images/tech/signalr.svg" alt="SignalR" class="tech-icon-img" width="44" height="44" loading="lazy" />
+                <span>SignalR</span>
               </div>
             </div>
 
-            <!-- Row 2 -->
-            <div class="tech-items-row"
-              style="display: flex; flex-wrap: wrap; justify-content: center; gap: 32px 48px;">
-              <div class="tech-item" style="color: #93c5fd;">
-                <i class="ph ph-target" style="font-size: 42px;"></i>
-                <span style="font-size: 14px; margin-top: 8px; font-weight: 500;">Clean Arch</span>
+            <div class="tech-items-row tech-row-2">
+              <div class="tech-item" style="--brand-glow: rgba(243, 112, 54, 0.55);">
+                <img src="./assets/images/tech/postman.svg" alt="Postman" class="tech-icon-img" width="44" height="44" loading="lazy" />
+                <span>Postman</span>
               </div>
-              <div class="tech-item" style="color: #fdba74;">
-                <i class="devicon-postman-plain" style="font-size: 42px;"></i>
-                <span style="font-size: 14px; margin-top: 8px; font-weight: 500;">Postman</span>
+              <div class="tech-item" style="--brand-glow: rgba(243, 79, 41, 0.55);">
+                <img src="./assets/images/tech/git-github.svg" alt="Git &amp; GitHub" class="tech-icon-img" width="44" height="44" loading="lazy" />
+                <span>Git &amp; GitHub</span>
               </div>
-              <div class="tech-item" style="color: #fb7185;">
-                <i class="ph ph-git-branch" style="font-size: 42px;"></i>
-                <span style="font-size: 14px; margin-top: 8px; font-weight: 500;">Git &amp; GitHub</span>
+              <div class="tech-item" style="--brand-glow: rgba(36, 150, 237, 0.55);">
+                <img src="./assets/images/tech/docker.svg" alt="Docker" class="tech-icon-img" width="44" height="44" loading="lazy" />
+                <span>Docker</span>
               </div>
-              <div class="tech-item" style="color: #38bdf8;">
-                <i class="devicon-docker-plain" style="font-size: 42px;"></i>
-                <span style="font-size: 14px; margin-top: 8px; font-weight: 500;">Docker</span>
+              <div class="tech-item" style="--brand-glow: rgba(31, 86, 255, 0.55);">
+                <img src="./assets/images/tech/ngrok.svg" alt="ngrok" class="tech-icon-img" width="44" height="44" loading="lazy" />
+                <span>ngrok</span>
+              </div>
+              <div class="tech-item" style="--brand-glow: rgba(0, 128, 128, 0.55);">
+                <img src="./assets/images/tech/latex.svg" alt="LaTeX" class="tech-icon-img" width="44" height="44" loading="lazy" />
+                <span>LaTeX</span>
               </div>
             </div>
-
           </div>
         </div>
 
@@ -357,12 +357,24 @@
                   Zagazig...</p>
               </li>
 
+              <li class="cert-slide" data-cert-img="./assets/images/Certificates/DeepDive .Net Advanced.jpg"
+                data-cert-title="Deep Dive .NET Workshop">
+                <div class="cert-slide-top">
+                  <div class="cert-slide-thumb">
+                    <img src="./assets/images/Certificates/DeepDive .Net Advanced.jpg" alt="Deep Dive .NET Workshop" loading="lazy"
+                      draggable="false" />
+                  </div>
+                  <h4 class="cert-slide-title">Deep Dive .NET Workshop</h4>
+                </div>
+                <p class="cert-slide-desc">Completed hands-on technical training in advanced .NET engineering organized by Zag Eng Team, covering in-depth C# concepts and backend development principles...</p>
+              </li>
+
               <li class="cert-slide" data-cert-img="./assets/images/Certificates/Algorithm Analysis & Design 1 of 1.png"
                 data-cert-title="Algorithm Analysis &amp; Design">
                 <div class="cert-slide-top">
                   <div class="cert-slide-thumb">
-                    <img src="./assets/images/Certificates/Algorithm Analysis & Design 1 of 1.png" alt="Algorithm Analysis"
-                      loading="lazy" draggable="false" />
+                    <img src="./assets/images/Certificates/Algorithm Analysis & Design 1 of 1.png"
+                      alt="Algorithm Analysis" loading="lazy" draggable="false" />
                   </div>
                   <h4 class="cert-slide-title">Algorithm Analysis &amp; Design</h4>
                 </div>
@@ -400,8 +412,8 @@
                 data-cert-title="SQL Intermediate">
                 <div class="cert-slide-top">
                   <div class="cert-slide-thumb">
-                    <img src="./assets/images/Certificates/SQL Intermediate 1 of 1.png" alt="SQL Intermediate" loading="lazy"
-                      draggable="false" />
+                    <img src="./assets/images/Certificates/SQL Intermediate 1 of 1.png" alt="SQL Intermediate"
+                      loading="lazy" draggable="false" />
                   </div>
                   <h4 class="cert-slide-title">SQL Intermediate</h4>
                 </div>
@@ -409,10 +421,12 @@
                   multi-table data filtering...</p>
               </li>
 
-              <li class="cert-slide" data-cert-img="./assets/images/Certificates/SQL Basic 1 of 1.png" data-cert-title="SQL Basic">
+              <li class="cert-slide" data-cert-img="./assets/images/Certificates/SQL Basic 1 of 1.png"
+                data-cert-title="SQL Basic">
                 <div class="cert-slide-top">
                   <div class="cert-slide-thumb">
-                    <img src="./assets/images/Certificates/SQL Basic 1 of 1.png" alt="SQL Basic" loading="lazy" draggable="false" />
+                    <img src="./assets/images/Certificates/SQL Basic 1 of 1.png" alt="SQL Basic" loading="lazy"
+                      draggable="false" />
                   </div>
                   <h4 class="cert-slide-title">SQL Basic</h4>
                 </div>
@@ -420,10 +434,52 @@
                   relational database concepts...</p>
               </li>
 
+              <li class="cert-slide"
+                data-cert-img="./assets/images/Certificates/Digital_Egypt_Pioneers_Full_Stack_DotNet_Certificate.jpg"
+                data-cert-title="Digital Egypt Pioneers - Full Stack .NET">
+                <div class="cert-slide-top">
+                  <div class="cert-slide-thumb">
+                    <img src="./assets/images/Certificates/Digital_Egypt_Pioneers_Full_Stack_DotNet_Certificate.jpg"
+                      alt="Digital Egypt Pioneers - Full Stack .NET" loading="lazy" draggable="false" />
+                  </div>
+                  <h4 class="cert-slide-title">Digital Egypt Pioneers - Full Stack .NET</h4>
+                </div>
+                <p class="cert-slide-desc">Completed the Digital Egypt Pioneers Initiative full stack .NET track,
+                  covering end-to-end web development from front-end fundamentals to ASP.NET Core back-end...</p>
+              </li>
+
+              <li class="cert-slide"
+                data-cert-img="./assets/images/Certificates/Digital_Egypt_Pioneers_Business_English_Certificate.png"
+                data-cert-title="Digital Egypt Pioneers - Business English">
+                <div class="cert-slide-top">
+                  <div class="cert-slide-thumb">
+                    <img src="./assets/images/Certificates/Digital_Egypt_Pioneers_Business_English_Certificate.png"
+                      alt="Digital Egypt Pioneers - Business English" loading="lazy" draggable="false" />
+                  </div>
+                  <h4 class="cert-slide-title">Digital Egypt Pioneers - Business English</h4>
+                </div>
+                <p class="cert-slide-desc">Completed the Business English track of the Digital Egypt Pioneers Initiative,
+                  strengthening professional communication and workplace English skills...</p>
+              </li>
+
+              <li class="cert-slide"
+                data-cert-img="./assets/images/Certificates/ITIDA_TIEC_Innovation_Training_Certificate.png"
+                data-cert-title="ITIDA TIEC Innovation Training">
+                <div class="cert-slide-top">
+                  <div class="cert-slide-thumb">
+                    <img src="./assets/images/Certificates/ITIDA_TIEC_Innovation_Training_Certificate.png"
+                      alt="ITIDA TIEC Innovation Training" loading="lazy" draggable="false" />
+                  </div>
+                  <h4 class="cert-slide-title">ITIDA TIEC Innovation Training</h4>
+                </div>
+                <p class="cert-slide-desc">Completed the ITIDA Technology Innovation and Entrepreneurship Center (TIEC)
+                  innovation training program, focused on technology innovation and entrepreneurial thinking...</p>
+              </li>
+
             </ul>
 
             <!-- Scroll progress bar -->
-            <div class="cert-scroll-track">
+            <div class="cert-scroll-track" id="certScrollTrack" role="scrollbar" aria-controls="certCarousel" aria-label="Certificates scrollbar" tabindex="0">
               <div class="cert-scroll-thumb" id="certScrollThumb"></div>
             </div>
           </div>
@@ -454,227 +510,409 @@
       <article class="resume" data-page="resume">
 
         <!-- ── Masthead ── -->
-        <div class="resume-masthead stagger-reveal" style="--reveal-i: 0">
-          <div class="resume-masthead-left">
-            <h2 class="h2 article-title">Resume</h2>
-          </div>
+        <header class="stagger-reveal" style="--reveal-i: 0">
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+
+        <div class="resume-container">
+
+          <!-- ── Work Experience ── -->
+          <section class="resume-section stagger-reveal" style="--reveal-i: 1">
+            <div class="resume-section-header resume-section-header--action">
+              <div class="resume-section-title-wrap">
+                <span class="resume-section-accent"></span>
+                <h3 class="resume-section-title">Work Experience</h3>
+              </div>
+
+              <a href="https://drive.google.com/file/d/18bx4ipDwCV1XloGAl5fWttgTDDAF_SBK/view" target="_blank" rel="noopener noreferrer" class="btn-resume-action"
+                aria-label="Download CV">
+                <ion-icon name="cloud-download-outline"></ion-icon>
+                <span>Download CV</span>
+              </a>
+            </div>
+
+            <div class="resume-timeline">
+              <div class="resume-timeline-line"></div>
+
+              <!-- Item 1: TEDxAlkawmia -->
+              <div class="resume-timeline-item">
+                <div class="resume-timeline-node resume-timeline-node--active"></div>
+                <div class="resume-card">
+                  <div class="resume-card-header">
+                    <div class="resume-card-primary">
+                      <h4 class="resume-role">Team Lead &amp; Backend .NET Engineer</h4>
+                      <div class="resume-org-line">
+                        <span class="resume-org">TEDxAlkawmia</span>
+                        <span class="resume-sub-org">&mdash; Event Management &amp; Ticketing Platform</span>
+                      </div>
+                    </div>
+                    <div class="resume-card-meta">
+                      <div class="resume-card-meta-row">
+                        <span class="resume-period">Jul 2026 &ndash; Present</span>
+                        <span class="resume-badge resume-badge--cyan">Active &middot; Volunteer</span>
+                      </div>
+                      <div class="resume-card-meta-row resume-card-meta-row--sub">
+                        <span class="resume-location">Remote &middot; Zagazig, Egypt</span>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="resume-desc">Leading a cross-functional team of 4 to architect and build the official event management and ticketing platform for TEDxAlkawmia.</p>
+                  <ul class="resume-bullets">
+                    <li>Led a 4-person cross-functional team as Team Lead, running Agile sprints on Jira, distributing tasks, conducting backend PR reviews, and making architectural decisions for the full solution.</li>
+                    <li>Designed the <strong>Clean Architecture</strong> solution on <strong>.NET 10</strong> with <strong>CQRS</strong> via <strong>MediatR</strong> &mdash; establishing MediatR pipeline behaviors for validation, authorization, and logging, alongside domain state machines on Event and Order aggregates and a <strong>GitHub Actions CI</strong> pipeline.</li>
+                    <li>Built production-grade auth with <strong>JWT access tokens</strong>, stateful <strong>refresh token rotation</strong> with reuse-detection family revocation, <strong>ASP.NET Core Identity</strong> with a custom token provider, and IP-aware partitioned <strong>rate limiting</strong>.</li>
+                    <li>Engineered the ticketing reservation engine with <strong>Paymob payment integration</strong>, enforcing optimistic concurrency via <strong>SQL Server RowVersion</strong> to prevent ticket overselling, alongside <strong>HMAC webhook verification</strong> for automated order confirmation.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Item 2: Planora -->
+              <div class="resume-timeline-item">
+                <div class="resume-timeline-node"></div>
+                <div class="resume-card">
+                  <div class="resume-card-header">
+                    <div class="resume-card-primary">
+                      <h4 class="resume-role">Co-Founder &amp; Backend .NET Engineer</h4>
+                      <div class="resume-org-line">
+                        <span class="resume-org">Planora</span>
+                        <span class="resume-sub-org">&mdash; Geotechnical Site Intelligence Platform</span>
+                      </div>
+                    </div>
+                    <div class="resume-card-meta">
+                      <div class="resume-card-meta-row">
+                        <span class="resume-period">Jan 2026 &ndash; Mar 2026</span>
+                        <span class="resume-badge resume-badge--gold">Co-Founder</span>
+                      </div>
+                      <div class="resume-card-meta-row resume-card-meta-row--sub">
+                        <span class="resume-location">Remote</span>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="resume-desc">Co-founded and built the distributed backend workflow for an AI-powered platform delivering geotechnical site intelligence reports (soil, flood risk, seismic, borehole planning) across Egypt and Africa.</p>
+                  <ul class="resume-bullets">
+                    <li>Implemented the geotechnical analysis aggregation handler via <strong>CQRS / MediatR</strong>, consolidating multi-module outputs into a unified response with progress tracking and polling fallback.</li>
+                    <li>Built real-time event streaming with <strong>ASP.NET Core SignalR</strong>, implementing WebSocket JWT handshake authentication and optimizing feed delivery via compound-indexed <strong>PostgreSQL / PostGIS</strong> storage.</li>
+                    <li>Resolved EF Core scoped DbContext concurrency crashes by decoupling database queries from parallelized external I/O tasks (<code>Task.WhenAll</code>), preserving thread safety under load.</li>
+                    <li>Developed a resilient <strong>AWS S3</strong> presigned asset pipeline with pre-flight existence validation to eliminate broken asset links, backed by <strong>Redis caching</strong> and on-demand invalidation.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Item 3: DEPI Round 3 -->
+              <div class="resume-timeline-item">
+                <div class="resume-timeline-node"></div>
+                <div class="resume-card">
+                  <div class="resume-card-header">
+                    <div class="resume-card-primary">
+                      <h4 class="resume-role">Team Lead &amp; Backend .NET Engineer</h4>
+                      <div class="resume-org-line">
+                        <span class="resume-org">ShurYan</span>
+                        <span class="resume-sub-org">&mdash; Digital Healthcare Platform</span>
+                      </div>
+                    </div>
+                    <div class="resume-card-meta">
+                      <div class="resume-card-meta-row">
+                        <span class="resume-period">Jun 2025 &ndash; Dec 2025</span>
+                        <span class="resume-badge resume-badge--gold"><i class="ph-light ph-medal" style="margin-right: 4px;"></i> Best Project &middot; DEPI R3</span>
+                      </div>
+                      <div class="resume-card-meta-row resume-card-meta-row--sub">
+                        <span class="resume-location">Hybrid &middot; Zagazig, Egypt</span>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="resume-desc">Led a cross-functional team of 5 over 6 months to architect and deliver <strong>ShurYan</strong> &mdash; a digital healthcare platform, awarded Best Project in the Full Stack .NET track.</p>
+                  <ul class="resume-bullets">
+                    <li>Led a 5-person cross-functional team over 6 months using Agile sprints, distributing backend tasks, reviewing PRs, and driving end-to-end system delivery to production. Awarded <strong>Best Project</strong> in the Full Stack .NET track at DEPI Round 3.</li>
+                    <li>Co-designed the 47-table <strong>SQL Server</strong> database schema and established the <strong>Clean Architecture</strong> foundation, EF Core persistence configurations, and core domain business logic.</li>
+                    <li>Integrated the <strong>Paymob</strong> payment gateway end-to-end, engineering resilient webhook processing with <strong>HMAC-SHA512</strong> constant-time signature verification to eliminate timing oracle vulnerabilities.</li>
+                    <li>Designed the Emergency SOS dispatch pipeline: capturing immutable clinical JSON record snapshots at alert time, validating emergency coverage, and streaming low-latency <strong>SignalR</strong> notifications with live GPS coordinates to physicians.</li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ── Leadership & Activities ── -->
+          <section class="resume-section stagger-reveal" style="--reveal-i: 2">
+            <div class="resume-section-header">
+              <span class="resume-section-accent resume-section-accent--gold"></span>
+              <h3 class="resume-section-title">Leadership &amp; Activities</h3>
+            </div>
+
+            <div class="resume-timeline">
+              <div class="resume-timeline-line"></div>
+
+              <!-- Item 1: ZagTech Hackathon -->
+              <div class="resume-timeline-item">
+                <div class="resume-timeline-node"></div>
+                <div class="resume-card">
+                  <div class="resume-card-header">
+                    <div class="resume-card-primary">
+                      <h4 class="resume-role">3rd Place Winner &mdash; AI &amp; Entrepreneurship Track</h4>
+                      <div class="resume-org-line">
+                        <span class="resume-org">ZagTech Hackathon</span>
+                        <span class="resume-sep">&bull;</span>
+                        <span class="resume-location">Hackathon</span>
+                      </div>
+                    </div>
+                    <div class="resume-card-meta">
+                      <span class="resume-period">May 2026</span>
+                      <span class="resume-badge resume-badge--gold"><i class="ph-light ph-trophy" style="margin-right: 4px;"></i> 3rd Place</span>
+                    </div>
+                  </div>
+                  <p class="resume-desc">Awarded 3rd place among competing teams for architecting and delivering an AI-powered healthcare platform, owning backend API integration, database design, and prototype execution under rapid competition deadlines.</p>
+                </div>
+              </div>
+
+              <!-- Item 2: Zag Eng Community -->
+              <div class="resume-timeline-item">
+                <div class="resume-timeline-node"></div>
+                <div class="resume-card">
+                  <div class="resume-card-header">
+                    <div class="resume-card-primary">
+                      <h4 class="resume-role">.NET Co-Lead</h4>
+                      <div class="resume-org-line">
+                        <span class="resume-org">Zag Eng Community</span>
+                        <span class="resume-sep">&bull;</span>
+                        <span class="resume-location">Zagazig, Egypt</span>
+                      </div>
+                    </div>
+                    <div class="resume-card-meta">
+                      <span class="resume-period">Dec 2025 &ndash; Mar 2026</span>
+                      <span class="resume-badge resume-badge--cyan">Community</span>
+                    </div>
+                  </div>
+                  <p class="resume-desc">Co-deliver structured .NET sessions on core and advanced topics, reinforced through hands-on tasks and real-world projects for a growing community of engineering students.</p>
+                </div>
+              </div>
+
+              <!-- Item 3: ICPC Zagazig -->
+              <div class="resume-timeline-item">
+                <div class="resume-timeline-node"></div>
+                <div class="resume-card">
+                  <div class="resume-card-header">
+                    <div class="resume-card-primary">
+                      <h4 class="resume-role">Competitive Programming Mentor</h4>
+                      <div class="resume-org-line">
+                        <span class="resume-org">ICPC Zagazig</span>
+                        <span class="resume-sep">&bull;</span>
+                        <span class="resume-location">Zagazig, Egypt</span>
+                      </div>
+                    </div>
+                    <div class="resume-card-meta">
+                      <span class="resume-period">Feb 2026</span>
+                      <span class="resume-badge resume-badge--cyan">Mentorship</span>
+                    </div>
+                  </div>
+                  <p class="resume-desc">Mentor students on data structures and algorithmic problem-solving for the ICPC regional round.</p>
+                </div>
+              </div>
+
+              <!-- Item 4: ECPC -->
+              <div class="resume-timeline-item">
+                <div class="resume-timeline-node"></div>
+                <div class="resume-card">
+                  <div class="resume-card-header">
+                    <div class="resume-card-primary">
+                      <h4 class="resume-role">National Contestant &middot; 400+ Problems Solved</h4>
+                      <div class="resume-org-line">
+                        <span class="resume-org">ECPC (Egyptian Collegiate Programming Contest)</span>
+                        <span class="resume-sep">&bull;</span>
+                        <span class="resume-location">Contest</span>
+                      </div>
+                    </div>
+                    <div class="resume-card-meta">
+                      <span class="resume-period">Aug 2025</span>
+                      <span class="resume-badge resume-badge--gold">National Contestant</span>
+                    </div>
+                  </div>
+                  <p class="resume-desc">Competed in official ECPC qualification rounds, solving algorithmic and data structure challenges under strict 5-hour time and memory limits; solved 400+ problems on Codeforces.</p>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ── Education ── -->
+          <section class="resume-section stagger-reveal" style="--reveal-i: 3">
+            <div class="resume-section-header">
+              <span class="resume-section-accent resume-section-accent--gold"></span>
+              <h3 class="resume-section-title">Education</h3>
+            </div>
+
+            <div class="resume-timeline">
+              <div class="resume-timeline-line"></div>
+
+              <div class="resume-timeline-item">
+                <div class="resume-timeline-node"></div>
+                <div class="resume-card">
+                  <div class="resume-card-header">
+                    <div class="resume-card-primary">
+                      <h4 class="resume-role">B.Sc. in Computer Science (4th Year)</h4>
+                      <div class="resume-org-line">
+                        <span class="resume-org">Zagazig University</span>
+                        <span class="resume-sep">&bull;</span>
+                        <span class="resume-location">Zagazig, Egypt</span>
+                      </div>
+                    </div>
+                    <div class="resume-card-meta">
+                      <span class="resume-period">Sep 2023 &ndash; Present</span>
+                      <span class="resume-badge resume-badge--cyan">4th Year</span>
+                      <span class="resume-badge resume-badge--gold">GPA 3.2 / 4.0</span>
+                    </div>
+                  </div>
+                  <p class="resume-desc">Strong foundation in computer science, software engineering principles, algorithms, and distributed systems. Expected Graduation: 2027.</p>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ── Skills & Technical Competencies ── -->
+          <section class="resume-section stagger-reveal" style="--reveal-i: 4">
+            <div class="resume-section-header">
+              <span class="resume-section-accent"></span>
+              <h3 class="resume-section-title">Skills &amp; Technical Competencies</h3>
+            </div>
+
+            <div class="resume-ledger">
+              <!-- Backend -->
+              <div class="resume-ledger-row" style="--ac: #1ab9e8"
+                aria-label="Backend: ASP.NET Core, C#, Entity Framework Core, LINQ, SignalR, Hangfire">
+                <div class="resume-ledger-left">
+                  <span class="resume-ledger-num">01</span>
+                  <span class="resume-ledger-name">Backend</span>
+                  <span class="resume-ledger-count">6</span>
+                </div>
+                <div class="resume-ledger-skills">
+                  <span class="resume-ledger-chip">ASP.NET Core (.NET 10 / 8)</span>
+                  <span class="resume-ledger-chip">C#</span>
+                  <span class="resume-ledger-chip">Entity Framework Core</span>
+                  <span class="resume-ledger-chip">LINQ</span>
+                  <span class="resume-ledger-chip">SignalR</span>
+                  <span class="resume-ledger-chip">Hangfire</span>
+                </div>
+              </div>
+
+              <!-- Architecture -->
+              <div class="resume-ledger-row" style="--ac: #46c48a"
+                aria-label="Architecture: Clean Architecture, CQRS, MediatR, Repository Pattern, Unit of Work, RESTful APIs">
+                <div class="resume-ledger-left">
+                  <span class="resume-ledger-num">02</span>
+                  <span class="resume-ledger-name">Architecture</span>
+                  <span class="resume-ledger-count">6</span>
+                </div>
+                <div class="resume-ledger-skills">
+                  <span class="resume-ledger-chip">Clean Architecture</span>
+                  <span class="resume-ledger-chip">CQRS</span>
+                  <span class="resume-ledger-chip">MediatR</span>
+                  <span class="resume-ledger-chip">Repository Pattern</span>
+                  <span class="resume-ledger-chip">Unit of Work</span>
+                  <span class="resume-ledger-chip">RESTful APIs</span>
+                </div>
+              </div>
+
+              <!-- Security -->
+              <div class="resume-ledger-row" style="--ac: #e07b6a"
+                aria-label="Security: JWT, Refresh Token Rotation, OTP, Google OAuth 2.0, RBAC, Rate Limiting, HMAC Verification">
+                <div class="resume-ledger-left">
+                  <span class="resume-ledger-num">03</span>
+                  <span class="resume-ledger-name">Security</span>
+                  <span class="resume-ledger-count">7</span>
+                </div>
+                <div class="resume-ledger-skills">
+                  <span class="resume-ledger-chip">JWT</span>
+                  <span class="resume-ledger-chip">Refresh Token Rotation</span>
+                  <span class="resume-ledger-chip">OTP</span>
+                  <span class="resume-ledger-chip">Google OAuth 2.0</span>
+                  <span class="resume-ledger-chip">RBAC</span>
+                  <span class="resume-ledger-chip">Rate Limiting</span>
+                  <span class="resume-ledger-chip">HMAC Verification</span>
+                </div>
+              </div>
+
+              <!-- Database -->
+              <div class="resume-ledger-row" style="--ac: #4fb6c9"
+                aria-label="Database: PostgreSQL, PostGIS, SQL Server, Redis, EF Core Migrations, Concurrency">
+                <div class="resume-ledger-left">
+                  <span class="resume-ledger-num">04</span>
+                  <span class="resume-ledger-name">Database</span>
+                  <span class="resume-ledger-count">6</span>
+                </div>
+                <div class="resume-ledger-skills">
+                  <span class="resume-ledger-chip">PostgreSQL</span>
+                  <span class="resume-ledger-chip">PostGIS</span>
+                  <span class="resume-ledger-chip">SQL Server</span>
+                  <span class="resume-ledger-chip">Redis</span>
+                  <span class="resume-ledger-chip">EF Core Migrations</span>
+                  <span class="resume-ledger-chip">Concurrency (RowVersion)</span>
+                </div>
+              </div>
+
+              <!-- Cloud & Storage -->
+              <div class="resume-ledger-row" style="--ac: #c98ad6"
+                aria-label="Cloud and Storage: AWS S3, Cloudinary, Supabase">
+                <div class="resume-ledger-left">
+                  <span class="resume-ledger-num">05</span>
+                  <span class="resume-ledger-name">Cloud</span>
+                  <span class="resume-ledger-count">3</span>
+                </div>
+                <div class="resume-ledger-skills">
+                  <span class="resume-ledger-chip">AWS S3</span>
+                  <span class="resume-ledger-chip">Cloudinary</span>
+                  <span class="resume-ledger-chip">Supabase</span>
+                </div>
+              </div>
+
+              <!-- Tools & DevOps -->
+              <div class="resume-ledger-row" style="--ac: #d9b26a"
+                aria-label="Tools and DevOps: Git, GitHub, Docker, Postman, Swagger, Serilog, GitHub Actions, LaTeX, ngrok">
+                <div class="resume-ledger-left">
+                  <span class="resume-ledger-num">06</span>
+                  <span class="resume-ledger-name">Tools</span>
+                  <span class="resume-ledger-count">9</span>
+                </div>
+                <div class="resume-ledger-skills">
+                  <span class="resume-ledger-chip">Git</span>
+                  <span class="resume-ledger-chip">GitHub</span>
+                  <span class="resume-ledger-chip">Docker</span>
+                  <span class="resume-ledger-chip">Postman</span>
+                  <span class="resume-ledger-chip">Swagger</span>
+                  <span class="resume-ledger-chip">Serilog</span>
+                  <span class="resume-ledger-chip">GitHub Actions</span>
+                  <span class="resume-ledger-chip">LaTeX</span>
+                  <span class="resume-ledger-chip">ngrok</span>
+                </div>
+              </div>
+
+              <!-- Soft Skills -->
+              <div class="resume-ledger-row" style="--ac: #8a94a2"
+                aria-label="Soft Skills: Team Leadership, Technical Mentorship, Agile and Sprints, Cross-functional Collaboration">
+                <div class="resume-ledger-left">
+                  <span class="resume-ledger-num">07</span>
+                  <span class="resume-ledger-name">Soft Skills</span>
+                  <span class="resume-ledger-count">4</span>
+                </div>
+                <div class="resume-ledger-skills">
+                  <span class="resume-ledger-chip">Team Leadership</span>
+                  <span class="resume-ledger-chip">Technical Mentorship</span>
+                  <span class="resume-ledger-chip">Agile / Sprints (Jira)</span>
+                  <span class="resume-ledger-chip">Cross-functional Collaboration</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
         </div>
 
-        <div class="blueprint-resume-layout">
-
-          <!-- ── Right Column (Experience & Education Timeline) ── -->
-          <div class="resume-right-col" style="width: 100%;">
-
-            <!-- Experience -->
-            <section class="resume-section stagger-reveal" style="--reveal-i: 1">
-              <div class="bp-sec-heading" style="justify-content: space-between;">
-                <div style="display: flex; align-items: center; gap: 12px;">
-                  <i class="ph-light ph-briefcase" style="font-size: 24px; color: var(--primary-color);"></i>
-                  <h3 class="bp-sec-title">Experience</h3>
-                </div>
-                <a href="./AbdulrhmanCV.pdf" class="btn-resume-dl" download="Abdulrhman_Alaa_CV.pdf"
-                  aria-label="Download CV">
-                  <span class="btn-resume-dl-text">Download CV</span>
-                  <div class="btn-resume-dl-icon">
-                    <ion-icon name="cloud-download-outline"></ion-icon>
-                  </div>
-                </a>
-              </div>
-
-              <div class="bp-timeline">
-                <div class="bp-timeline-line"></div>
-
-                <!-- Exp Item 1 -->
-                <div class="bp-exp-item">
-                  <div class="bp-timeline-node bp-timeline-node--glow"></div>
-                  <div class="bp-exp-card">
-                    <div class="bp-exp-header">
-                      <div class="bp-meta">
-                        <span class="bp-date">Jun 2025 &ndash; Dec 2025</span>
-                        <span class="bp-badge bp-badge--gold"><i class="ph-light ph-medal"
-                            style="margin-right: 4px;"></i> Best Project &middot; DEPI</span>
-                        <span class="bp-badge bp-badge--teal"><i class="ph-light ph-trophy"
-                            style="margin-right: 4px;"></i> 3rd &middot; ZagTech Hackathon</span>
-                      </div>
-                      <span class="bp-type">Full-Time</span>
-                    </div>
-                    <h4 class="bp-role">Team Lead &amp; Backend .NET Engineer</h4>
-                    <span class="bp-company">Digital Egypt Pioneers Initiative (DEPI)</span>
-                    <p class="bp-desc">Led a cross-functional team of 5 over 6 months to architect and deliver
-                      <strong>ShurYan</strong> &mdash; a scalable digital healthcare platform, from concept to fully
-                      deployed production system.
-                    </p>
-                    <ul class="bp-bullets">
-                      <li>Designed Clean Architecture backend &mdash; 33 REST controllers, 100+ endpoints, 47-table SQL
-                        Server database.</li>
-                      <li>Engineered 36 Application Services across 5 distinct role-based portals (Patient, Doctor,
-                        Pharmacy, Lab, Admin).</li>
-                      <li>Implemented JWT + Refresh Token Rotation, Google OAuth 2.0, OTP verification, and RBAC.</li>
-                      <li>Integrated Paymob (payments), Cloudinary (media), MailKit (async email), and SignalR
-                        (real-time).</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <!-- Exp Item 2 -->
-                <div class="bp-exp-item">
-                  <div class="bp-timeline-node"></div>
-                  <div class="bp-exp-card">
-                    <div class="bp-exp-header">
-                      <div class="bp-meta">
-                        <span class="bp-date">Dec 2025 &ndash; Present</span>
-                        <span class="bp-badge bp-badge--teal">Active</span>
-                      </div>
-                      <span class="bp-type">Volunteer</span>
-                    </div>
-                    <h4 class="bp-role">.NET Co-Lead</h4>
-                    <span class="bp-company">Zag Eng Community</span>
-                    <p class="bp-desc">Co-deliver structured sessions on core and advanced .NET concepts, reinforcing
-                      learning through hands-on tasks and real-world projects.</p>
-                  </div>
-                </div>
-
-                <!-- Exp Item 3 -->
-                <div class="bp-exp-item">
-                  <div class="bp-timeline-node"></div>
-                  <div class="bp-exp-card">
-                    <div class="bp-exp-header">
-                      <div class="bp-meta">
-                        <span class="bp-date">Feb 2025 &ndash; Present</span>
-                        <span class="bp-badge bp-badge--teal">Active</span>
-                      </div>
-                      <span class="bp-type">Volunteer</span>
-                    </div>
-                    <h4 class="bp-role">Competitive Programming Mentor</h4>
-                    <span class="bp-company">ICPC Zagazig</span>
-                    <p class="bp-desc">Individually mentor students on competitive programming fundamentals, algorithmic
-                      problem-solving, and efficient data structure implementation for ICPC preparation.</p>
-                  </div>
-                </div>
-
-                <!-- Exp Item 4 -->
-                <div class="bp-exp-item">
-                  <div class="bp-timeline-node"></div>
-                  <div class="bp-exp-card">
-                    <div class="bp-exp-header">
-                      <div class="bp-meta">
-                        <span class="bp-date">Sep 2025 &ndash; Oct 2025</span>
-                      </div>
-                      <span class="bp-type">Remote</span>
-                    </div>
-                    <h4 class="bp-role">Backend Developer</h4>
-                    <span class="bp-company">E-Commerce Team Project</span>
-                    <ul class="bp-bullets">
-                      <li>Collaborated in Agile sprints with a 3-developer team, designing RESTful APIs for Products,
-                        Orders, and Users.</li>
-                      <li>Enforced structured Git branching strategy (<code>feat</code>, <code>bug-fix</code>) across
-                        the team.</li>
-                    </ul>
-                  </div>
-                </div>
-
-              </div>
-            </section>
-
-            <!-- Education -->
-            <section class="resume-section stagger-reveal" style="--reveal-i: 2" style="margin-top: 80px;">
-              <div class="bp-sec-heading">
-                <i class="ph-light ph-graduation-cap" style="font-size: 24px; color: var(--vegas-gold);"></i>
-                <h3 class="bp-sec-title">Education</h3>
-              </div>
-
-              <div class="bp-timeline">
-                <div class="bp-timeline-line"></div>
-
-                <div class="bp-exp-item">
-                  <div class="bp-timeline-node"></div>
-                  <div class="bp-exp-card">
-                    <div class="bp-exp-header">
-                      <div class="bp-meta">
-                        <span class="bp-date">Sep 2023 &ndash; Present</span>
-                        <span class="bp-badge bp-badge--teal">3rd Year</span>
-                        <span class="bp-badge bp-badge--gold" style="margin-left: 8px;">GPA 3.2 / 4.0</span>
-                      </div>
-                      <span class="bp-type">University</span>
-                    </div>
-                    <h4 class="bp-role">B.Sc. Computer Science</h4>
-                    <span class="bp-company">Zagazig University</span>
-                    <p class="bp-desc">Building a strong foundation in data structures, algorithms, software engineering
-                      principles, and distributed systems.</p>
-                  </div>
-                </div>
-
-              </div>
-            </section>
-
-          </div>
-
-          <!-- ── Left Column (Skills Sidebar transformed to bottom row) ── -->
-          <div class="resume-left-col" style="width: 100%;">
-
-            <!-- Technical Skills -->
-            <section class="resume-section stagger-reveal" style="--reveal-i: 3" style="margin-top: 80px;">
-              <div class="bp-sec-heading">
-                <i class="ph-light ph-code" style="font-size: 24px; color: var(--vegas-gold);"></i>
-                <h3 class="bp-sec-title">Skills &amp; Tools</h3>
-              </div>
-
-              <div class="bp-skills-list">
-                <!-- Backend -->
-                <div class="bp-skill-bezel-shell">
-                  <div class="bp-skill-bezel-core">
-                    <span class="bp-skill-label">Backend</span>
-                    <p class="bp-skill-items">ASP.NET Core, C# / .NET 8, EF Core, LINQ, REST APIs, SignalR</p>
-                  </div>
-                </div>
-                <!-- Architecture & Patterns -->
-                <div class="bp-skill-bezel-shell">
-                  <div class="bp-skill-bezel-core">
-                    <span class="bp-skill-label">Architecture &amp; Patterns</span>
-                    <p class="bp-skill-items">Clean Architecture, Repository Pattern, Unit of Work, CQRS</p>
-                  </div>
-                </div>
-                <!-- Auth & Security -->
-                <div class="bp-skill-bezel-shell">
-                  <div class="bp-skill-bezel-core">
-                    <span class="bp-skill-label">Auth &amp; Security</span>
-                    <p class="bp-skill-items">JWT, Refresh Tokens, Google OAuth 2.0, RBAC, OTP</p>
-                  </div>
-                </div>
-                <!-- Database -->
-                <div class="bp-skill-bezel-shell">
-                  <div class="bp-skill-bezel-core">
-                    <span class="bp-skill-label">Database</span>
-                    <p class="bp-skill-items">SQL Server, MySQL, EF Migrations, Query Optimization</p>
-                  </div>
-                </div>
-                <!-- Languages -->
-                <div class="bp-skill-bezel-shell">
-                  <div class="bp-skill-bezel-core">
-                    <span class="bp-skill-label">Languages</span>
-                    <p class="bp-skill-items">C#, C++, Python, Java, JavaScript</p>
-                  </div>
-                </div>
-                <!-- Tools -->
-                <div class="bp-skill-bezel-shell">
-                  <div class="bp-skill-bezel-core">
-                    <span class="bp-skill-label">Tools</span>
-                    <p class="bp-skill-items">Git &amp; GitHub, Postman, Swagger, Visual Studio, VS Code</p>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-          </div>
-
-        </div>
-        <!-- ── Bottom CTA Strip ── -->
-        <div class="resume-cta-strip stagger-reveal" style="--reveal-i: 6">
-          <p class="resume-cta-text">Ready to work together?</p>
-          <a href="./AbdulrhmanCV.pdf" class="btn-resume-dl btn-resume-dl--strip" download="Abdulrhman_Alaa_CV.pdf"
+        <!-- ── Bottom Action Strip ── -->
+        <div class="resume-cta-strip stagger-reveal" style="--reveal-i: 5">
+          <p class="resume-cta-text">Looking for a dedicated .NET Backend Engineer?</p>
+          <a href="https://drive.google.com/file/d/18bx4ipDwCV1XloGAl5fWttgTDDAF_SBK/view" target="_blank" rel="noopener noreferrer" class="btn-resume-action btn-resume-action--strip"
             aria-label="Download CV">
-            <span class="btn-resume-dl-text">Download CV</span>
-            <div class="btn-resume-dl-icon"><ion-icon name="cloud-download-outline"></ion-icon></div>
+            <ion-icon name="cloud-download-outline"></ion-icon>
+            <span>Download CV</span>
           </a>
         </div>
 
@@ -685,7 +923,6 @@
         <!-- ── Portfolio Header ── -->
         <header class="pf-header stagger-reveal" style="--reveal-i: 0">
           <h2 class="h2 article-title">Portfolio</h2>
-          <p class="pf-header-sub">Selected work across backend systems, APIs, and applications.</p>
         </header>
 
         <!-- ── Filter Bar ── -->
@@ -698,13 +935,45 @@
           <button class="pf-filter-btn" data-pf-filter data-pf-value="java" role="tab"
             aria-selected="false">Java</button>
           <button class="pf-filter-btn" data-pf-filter data-pf-value="c++" role="tab" aria-selected="false">C++</button>
-          <button class="pf-filter-btn" data-pf-filter data-pf-value="python" role="tab" aria-selected="false">Python</button>
+          <button class="pf-filter-btn" data-pf-filter data-pf-value="python" role="tab"
+            aria-selected="false">Python</button>
         </div>
 
         <!-- ── Bento Project Grid ── -->
         <div class="pf-bento" id="pfBento">
 
-          <!-- ① ShurYan — Featured (wide) -->
+          <!-- ① Planora — Featured (wide) -->
+          <article class="pf-card pf-card--featured" data-pf-item data-pf-category=".net core" data-project-id="planora"
+            tabindex="0" role="button" aria-label="View Planora Geotechnical Site Intelligence Platform details">
+            <div class="pf-card__img">
+              <img src="./assets/images/Projects/Planora/1-hero.png"
+                alt="Planora Geotechnical Site Intelligence Platform" loading="lazy" />
+              <div class="pf-card__img-overlay" aria-hidden="true">
+                <span class="pf-view-cta">
+                  <span class="pf-view-cta__text">View Project</span>
+                  <span class="pf-view-cta__icon" aria-hidden="true">↗</span>
+                </span>
+              </div>
+            </div>
+            <div class="pf-card__body">
+              <div class="pf-card__meta">
+                <span class="pf-eyebrow">.NET Core + Angular</span>
+                <span class="pf-badge pf-badge--gold" aria-label="Status: Live in production">Co-Founder · Live</span>
+              </div>
+              <h3 class="pf-card__title">Planora — Geotechnical Site Intelligence</h3>
+              <p class="pf-card__desc">AI-powered platform delivering soil, flood risk, and borehole planning reports
+                for land parcels across Egypt and Africa — in hours instead of weeks.</p>
+              <div class="pf-tags" aria-label="Technologies used">
+                <span>ASP.NET Core</span>
+                <span>CQRS / MediatR</span>
+                <span>SignalR</span>
+                <span>Hangfire</span>
+                <span>PostGIS</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ② ShurYan — Featured (wide) -->
           <article class="pf-card pf-card--featured" data-pf-item data-pf-category=".net core" data-project-id="shuryan"
             tabindex="0" role="button" aria-label="View ShurYan Healthcare Platform details">
             <div class="pf-card__img">
@@ -726,19 +995,20 @@
                 and labs — built with Clean Architecture and deployed to production.</p>
               <div class="pf-tags" aria-label="Technologies used">
                 <span>ASP.NET Core</span>
-                <span>React</span>
                 <span>SQL Server</span>
                 <span>SignalR</span>
+                <span>Repository Pattern</span>
+                <span>Unit Of Work</span>
                 <span>JWT</span>
               </div>
             </div>
           </article>
 
-          <!-- ② E-Commerce API -->
+          <!-- ③ E-Commerce API -->
           <article class="pf-card" data-pf-item data-pf-category=".net core" data-project-id="ecommerce" tabindex="0"
             role="button" aria-label="View E-Commerce API details">
             <div class="pf-card__img">
-                   <img src="./assets/images/Projects/Ecommerce/1.png" alt="E-Commerce API" loading="lazy" />
+              <img src="./assets/images/Projects/Ecommerce/1.png" alt="E-Commerce API" loading="lazy" />
               <div class="pf-card__img-overlay" aria-hidden="true">
                 <span class="pf-view-cta">
                   <span class="pf-view-cta__text">View Project</span>
@@ -758,11 +1028,12 @@
             </div>
           </article>
 
-          <!-- ③ Ball Breaker Game -->
+          <!-- ④ Ball Breaker Game -->
           <article class="pf-card" data-pf-item data-pf-category="java" data-project-id="ballbreaker" tabindex="0"
             role="button" aria-label="View Ball Breaker Game details">
             <div class="pf-card__img">
-              <img src="./assets/images/Projects/Ball-Breaker/Start point.png" alt="Ball Breaker arcade game" loading="lazy" />
+              <img src="./assets/images/Projects/Ball-Breaker/Start point.png" alt="Ball Breaker arcade game"
+                loading="lazy" />
               <div class="pf-card__img-overlay" aria-hidden="true">
                 <span class="pf-view-cta">
                   <span class="pf-view-cta__text">View Project</span>
@@ -783,7 +1054,7 @@
             </div>
           </article>
 
-          <!-- ④ Quran Playlist Manager -->
+          <!-- ⑤ Quran Playlist Manager -->
           <article class="pf-card" data-pf-item data-pf-category="c++" data-project-id="quran-manager" tabindex="0"
             role="button" aria-label="View Quran Playlist Manager details">
             <div class="pf-card__img">
@@ -807,7 +1078,7 @@
             </div>
           </article>
 
-          <!-- ⑤ NetSec Toolkit -->
+          <!-- ⑥ NetSec Toolkit -->
           <article class="pf-card" data-pf-item data-pf-category="python" data-project-id="netsec-toolkit" tabindex="0"
             role="button" aria-label="View NetSec Toolkit details">
             <div class="pf-card__img">
@@ -822,7 +1093,8 @@
             <div class="pf-card__body">
               <span class="pf-eyebrow">Python</span>
               <h3 class="pf-card__title">NetSec Toolkit</h3>
-              <p class="pf-card__desc">Comprehensive cybersecurity utility for network scanning, packet sniffing, and vulnerability assessment.</p>
+              <p class="pf-card__desc">Comprehensive cybersecurity utility for network scanning, packet sniffing, and
+                vulnerability assessment.</p>
               <div class="pf-tags">
                 <span>Scapy</span>
                 <span>Security</span>
@@ -831,7 +1103,7 @@
             </div>
           </article>
 
-          <!-- ⑥ Network Scanner -->
+          <!-- ⑦ Network Scanner -->
           <article class="pf-card" data-pf-item data-pf-category="python" data-project-id="network-scanner" tabindex="0"
             role="button" aria-label="View Network Scanner details">
             <div class="pf-card__img">
@@ -846,7 +1118,8 @@
             <div class="pf-card__body">
               <span class="pf-eyebrow">Python</span>
               <h3 class="pf-card__title">Network Scanner</h3>
-              <p class="pf-card__desc">Advanced network discovery tool utilizing ARP requests to map out devices on a local network.</p>
+              <p class="pf-card__desc">Advanced network discovery tool utilizing ARP requests to map out devices on a
+                local network.</p>
               <div class="pf-tags">
                 <span>ARP</span>
                 <span>Discovery</span>
@@ -855,7 +1128,7 @@
             </div>
           </article>
 
-          <!-- ⑦ MAC Address Changer -->
+          <!-- ⑧ MAC Address Changer -->
           <article class="pf-card" data-pf-item data-pf-category="python" data-project-id="mac-changer" tabindex="0"
             role="button" aria-label="View MAC Address Changer details">
             <div class="pf-card__img">
@@ -870,7 +1143,8 @@
             <div class="pf-card__body">
               <span class="pf-eyebrow">Python</span>
               <h3 class="pf-card__title">MAC Address Changer</h3>
-              <p class="pf-card__desc">System utility that easily spoof your MAC address using the subprocess module.</p>
+              <p class="pf-card__desc">System utility that easily spoof your MAC address using the subprocess module.
+              </p>
               <div class="pf-tags">
                 <span>Subprocess</span>
                 <span>Spoofing</span>
@@ -879,7 +1153,7 @@
             </div>
           </article>
 
-          <!-- ⑧ Contact Manager -->
+          <!-- ⑨ Contact Manager -->
           <article class="pf-card" data-pf-item data-pf-category="c++" data-project-id="contact-manager" tabindex="0"
             role="button" aria-label="View Contact Manager details">
             <div class="pf-card__img">
@@ -894,7 +1168,8 @@
             <div class="pf-card__body">
               <span class="pf-eyebrow">C++</span>
               <h3 class="pf-card__title">Contact Manager</h3>
-              <p class="pf-card__desc">A C++ system for robust contact management, featuring dynamic storage and file I/O operations.</p>
+              <p class="pf-card__desc">A C++ system for robust contact management, featuring dynamic storage and file
+                I/O operations.</p>
               <div class="pf-tags">
                 <span>C++</span>
                 <span>OOP</span>
@@ -921,243 +1196,62 @@
           <h2 class="h2 article-title">References</h2>
         </header>
 
-        <section class="ref-intro stagger-reveal" style="--reveal-i: 1">
-          <p class="ref-intro-text">A curated personal library of cheat sheets, architecture notes, and quick-references
-            I've collected and created. Click any row to open the PDF.</p>
-        </section>
-
-        <!-- Category Filter -->
-        <section class="ref-filter-section stagger-reveal" style="--reveal-i: 2">
-          <ul class="ref-filter-list">
-            <li class="ref-filter-item"><button class="ref-filter-btn active" data-ref-filter>All</button></li>
-            <li class="ref-filter-item"><button class="ref-filter-btn" data-ref-filter>Algorithms</button></li>
-            <li class="ref-filter-item"><button class="ref-filter-btn" data-ref-filter>.NET</button></li>
-            <li class="ref-filter-item"><button class="ref-filter-btn" data-ref-filter>Databases</button></li>
-            <li class="ref-filter-item"><button class="ref-filter-btn" data-ref-filter>Other</button></li>
-          </ul>
-        </section>
-
-        <!-- Editorial List -->
-        <section class="ref-list stagger-reveal" style="--reveal-i: 3">
-
-          <!-- Row 1 -->
-          <div class="ref-row" data-ref-item data-ref-category="algorithms"
-            data-pdf="./assets/references/algorithms-cheatsheet.pdf" data-ref-title="Algorithms Cheat Sheet"
-            tabindex="0" role="button" aria-label="View Algorithms Cheat Sheet PDF">
-            <span class="ref-row-num" aria-hidden="true">01</span>
-            <div class="ref-row-icon ref-icon-algorithms">
-              <ion-icon name="code-slash-outline"></ion-icon>
+        <section class="ref-coming-soon stagger-reveal" style="--reveal-i: 1">
+          <div class="ref-cs-card">
+            <!-- Status pill -->
+            <div class="ref-cs-badge">
+              <span class="ref-cs-pulse" aria-hidden="true"></span>
+              <span>Under Curation · Coming Soon</span>
             </div>
-            <div class="ref-row-content">
-              <div class="ref-row-meta">
-                <span class="ref-badge ref-badge-algorithms">Algorithms</span>
+
+            <!-- Main icon -->
+            <div class="ref-cs-icon-box" aria-hidden="true">
+              <ion-icon name="library-outline"></ion-icon>
+            </div>
+
+            <h3 class="ref-cs-title">Personal Engineering Library</h3>
+
+            <p class="ref-cs-desc">
+              I'm actively curating a high-signal knowledge base of .NET architecture deep-dives,
+              system design blueprints, clean code patterns, and algorithmic quick-references.
+              An interactive visual explorer is currently under development.
+            </p>
+
+            <!-- Upcoming tracks -->
+            <div class="ref-cs-tracks">
+              <span class="ref-cs-tag"><ion-icon name="layers-outline"></ion-icon> Clean Architecture &amp; CQRS</span>
+              <span class="ref-cs-tag"><ion-icon name="hardware-chip-outline"></ion-icon> .NET &amp; C# Internals</span>
+              <span class="ref-cs-tag"><ion-icon name="server-outline"></ion-icon> SQL &amp; Database Performance</span>
+              <span class="ref-cs-tag"><ion-icon name="git-network-outline"></ion-icon> Distributed Systems</span>
+              <span class="ref-cs-tag"><ion-icon name="code-slash-outline"></ion-icon> Competitive Algorithms</span>
+            </div>
+
+            <!-- Meta bar -->
+            <div class="ref-cs-meta">
+              <div class="ref-cs-meta-item">
+                <span class="ref-cs-meta-k">Status</span>
+                <span class="ref-cs-meta-v">Assembling &amp; Documenting</span>
               </div>
-              <h3 class="ref-row-title">Algorithms Cheat Sheet</h3>
-              <p class="ref-row-desc">Big-O complexities, sorting, graph traversal, DP patterns, and common data
-                structures at a glance.</p>
-            </div>
-            <div class="ref-row-cta" aria-hidden="true">
-              <span class="ref-cta-text">View PDF</span>
-              <span class="ref-cta-arrow">→</span>
-            </div>
-            <span class="ref-row-bar" aria-hidden="true"></span>
-          </div>
-
-          <!-- Row 2 -->
-          <div class="ref-row" data-ref-item data-ref-category=".net"
-            data-pdf="./assets/references/dotnet-clean-architecture.pdf" data-ref-title="Clean Architecture in .NET"
-            tabindex="0" role="button" aria-label="View Clean Architecture in .NET PDF">
-            <span class="ref-row-num" aria-hidden="true">02</span>
-            <div class="ref-row-icon ref-icon-dotnet">
-              <ion-icon name="layers-outline"></ion-icon>
-            </div>
-            <div class="ref-row-content">
-              <div class="ref-row-meta">
-                <span class="ref-badge ref-badge-dotnet">.NET</span>
-              </div>
-              <h3 class="ref-row-title">Clean Architecture in .NET</h3>
-              <p class="ref-row-desc">Layer separation (API, Application, Core, Infrastructure), dependency rules, and
-                best practices for ASP.NET Core.</p>
-            </div>
-            <div class="ref-row-cta" aria-hidden="true">
-              <span class="ref-cta-text">View PDF</span>
-              <span class="ref-cta-arrow">→</span>
-            </div>
-            <span class="ref-row-bar" aria-hidden="true"></span>
-          </div>
-
-          <!-- Row 3 -->
-          <div class="ref-row" data-ref-item data-ref-category="databases"
-            data-pdf="./assets/references/sql-reference.pdf" data-ref-title="SQL Reference Guide" tabindex="0"
-            role="button" aria-label="View SQL Reference Guide PDF">
-            <span class="ref-row-num" aria-hidden="true">03</span>
-            <div class="ref-row-icon ref-icon-databases">
-              <ion-icon name="server-outline"></ion-icon>
-            </div>
-            <div class="ref-row-content">
-              <div class="ref-row-meta">
-                <span class="ref-badge ref-badge-databases">Databases</span>
-              </div>
-              <h3 class="ref-row-title">SQL Reference Guide</h3>
-              <p class="ref-row-desc">DDL, DML, joins, subqueries, indexes, stored procedures, and query optimization
-                techniques.</p>
-            </div>
-            <div class="ref-row-cta" aria-hidden="true">
-              <span class="ref-cta-text">View PDF</span>
-              <span class="ref-cta-arrow">→</span>
-            </div>
-            <span class="ref-row-bar" aria-hidden="true"></span>
-          </div>
-
-          <!-- Row 4 -->
-          <div class="ref-row" data-ref-item data-ref-category="other" data-pdf="./assets/references/git-workflow.pdf"
-            data-ref-title="Git Workflow &amp; Branching Strategy" tabindex="0" role="button"
-            aria-label="View Git Workflow &amp; Branching Strategy PDF">
-            <span class="ref-row-num" aria-hidden="true">04</span>
-            <div class="ref-row-icon ref-icon-other">
-              <ion-icon name="git-branch-outline"></ion-icon>
-            </div>
-            <div class="ref-row-content">
-              <div class="ref-row-meta">
-                <span class="ref-badge ref-badge-other">Other</span>
-              </div>
-              <h3 class="ref-row-title">Git Workflow &amp; Branching Strategy</h3>
-              <p class="ref-row-desc">Git Flow, feature branching, tagging releases, conflict resolution, and pull
-                request best practices.</p>
-            </div>
-            <div class="ref-row-cta" aria-hidden="true">
-              <span class="ref-cta-text">View PDF</span>
-              <span class="ref-cta-arrow">→</span>
-            </div>
-            <span class="ref-row-bar" aria-hidden="true"></span>
-          </div>
-
-        </section>
-
-        <!-- Empty state -->
-        <div class="ref-empty" id="refEmpty" style="display: none;">
-          <ion-icon name="folder-open-outline"></ion-icon>
-          <p>No references in this category yet.</p>
-        </div>
-
-      </article>
-
-      <!-- #CONTACT -->
-      <article class="contact" data-page="contact">
-        <header class="stagger-reveal" style="--reveal-i: 0">
-          <h2 class="h2 article-title">Contact</h2>
-        </header>
-
-        <section class="contact-intro stagger-reveal" style="--reveal-i: 1">
-          <p class="contact-intro-text">Have a project in mind or just want to say hello? Send a message and I'll get
-            back to you within 24 hours.</p>
-        </section>
-
-        <!-- Info Cards -->
-        <div class="contact-cards stagger-reveal" style="--reveal-i: 2">
-
-          <div class="contact-card">
-            <div class="contact-card-icon">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
-            <div class="contact-card-body">
-              <span class="contact-card-label">Email</span>
-              <a href="mailto:abdulrhman.alaa.dev@gmail.com"
-                class="contact-card-value">abdulrhman.alaa.dev@gmail.com</a>
-            </div>
-          </div>
-
-          <div class="contact-card">
-            <div class="contact-card-icon">
-              <ion-icon name="phone-portrait-outline"></ion-icon>
-            </div>
-            <div class="contact-card-body">
-              <span class="contact-card-label">Phone</span>
-              <a href="tel:+201XXXXXXXXX" class="contact-card-value">+20 1XX XXX XXXX</a>
-            </div>
-          </div>
-
-          <div class="contact-card">
-            <div class="contact-card-icon">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
-            <div class="contact-card-body">
-              <span class="contact-card-label">Location</span>
-              <span class="contact-card-value">Zagazig, Egypt</span>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Contact Form -->
-        <section class="contact-form-section stagger-reveal" style="--reveal-i: 3">
-          <form id="contactForm" class="contact-form" novalidate>
-
-            <div class="form-row">
-              <div class="form-group" id="nameGroup">
-                <label for="contactName" class="form-label">Full Name</label>
-                <div class="form-input-wrap">
-                  <input type="text" id="contactName" name="name" class="form-input" placeholder="Abdulrhman Alaa"
-                    autocomplete="name" required />
-                  <span class="form-input-focus-bar"></span>
-                </div>
-                <p class="form-error" id="nameError"></p>
-              </div>
-
-              <div class="form-group" id="emailGroup">
-                <label for="contactEmail" class="form-label">Email Address</label>
-                <div class="form-input-wrap">
-                  <input type="email" id="contactEmail" name="email" class="form-input" placeholder="hello@example.com"
-                    autocomplete="email" required />
-                  <span class="form-input-focus-bar"></span>
-                </div>
-                <p class="form-error" id="emailError"></p>
+              <div class="ref-cs-divider" aria-hidden="true"></div>
+              <div class="ref-cs-meta-item">
+                <span class="ref-cs-meta-k">Experience</span>
+                <span class="ref-cs-meta-v">Interactive Mind Map &amp; Notes</span>
               </div>
             </div>
 
-            <div class="form-group" id="subjectGroup">
-              <label for="contactSubject" class="form-label">Subject</label>
-              <div class="form-input-wrap">
-                <input type="text" id="contactSubject" name="subject" class="form-input"
-                  placeholder="Project collaboration, internship, or just hello…" required />
-                <span class="form-input-focus-bar"></span>
-              </div>
-              <p class="form-error" id="subjectError"></p>
-            </div>
-
-            <div class="form-group" id="messageGroup">
-              <label for="contactMessage" class="form-label">
-                Message
-                <span class="char-counter" id="charCounter">0 / 500</span>
-              </label>
-              <div class="form-input-wrap">
-                <textarea id="contactMessage" name="message" class="form-input form-textarea"
-                  placeholder="Tell me about your project, idea, or question…" rows="5" maxlength="500"
-                  required></textarea>
-                <span class="form-input-focus-bar"></span>
-              </div>
-              <p class="form-error" id="messageError"></p>
-            </div>
-
-            <div class="form-submit-row">
-              <button type="submit" id="contactSubmitBtn" class="contact-submit-btn">
-                <span class="submit-btn-text">
-                  <ion-icon name="send-outline"></ion-icon>
-                  Send Message
-                </span>
-                <span class="submit-btn-loading" aria-hidden="true">
-                  <span class="submit-spinner"></span>
-                  Sending…
-                </span>
+            <!-- Action button -->
+            <div class="ref-cs-cta">
+              <button class="ref-cs-btn" type="button" onclick="navigateToPage('portfolio')">
+                <span>View Portfolio Projects</span>
+                <ion-icon name="arrow-forward-outline"></ion-icon>
               </button>
-
-              <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
             </div>
-
-          </form>
+          </div>
         </section>
 
       </article>
+
+
     </div>
   </main>
 
@@ -1244,7 +1338,7 @@
   </div>
 
   <!-- custom js link -->
-  <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/script.js?v=4.1"></script>
 
   <!-- ionicon link -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
