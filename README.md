@@ -1,7 +1,7 @@
 <h1 align="center">Abdulrhman Alaa — Portfolio</h1>
 
 <p align="center">
-  Personal portfolio of a Backend .NET Engineer — built from scratch with pure HTML, CSS, and vanilla JS.
+  Personal portfolio of a Backend .NET Engineer.
   <br />
   <a href="https://abdulrhmanx9.vercel.app/" target="_blank"><strong>Live Demo »</strong></a>
 </p>
