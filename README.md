@@ -41,6 +41,7 @@ Every line of CSS and JS is written intentionally. The design leans into a **dar
 ```
 Portfolio/
 ├── index.html              # Single-page app entry point
+├── favicon.ico             # Site favicon
 └── assets/
     ├── css/
     │   └── style.css       # All styles — design system, components, themes
@@ -54,7 +55,8 @@ Portfolio/
         │   ├── shuryan/
         │   ├── ecommerce/
         │   └── ball-breaker/
-        └── tech/           # SVG tech stack icons
+        ├── tech/           # SVG tech stack icons
+        └── logo.ico        # Brand icon
 ```
 
 ---
