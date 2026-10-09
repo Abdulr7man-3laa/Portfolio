@@ -3,11 +3,7 @@
 <p align="center">
   Personal portfolio of a Backend .NET Engineer — built from scratch with pure HTML, CSS, and vanilla JS.
   <br />
-  <a href="https://abdulr7man-3laa.github.io/Portfolio" target="_blank"><strong>Live Demo »</strong></a>
-  &nbsp;·&nbsp;
-  <a href="https://github.com/Abdulr7man-3laa/Portfolio/issues">Report Bug</a>
-  &nbsp;·&nbsp;
-  <a href="https://github.com/Abdulr7man-3laa/Portfolio/issues">Request Feature</a>
+  <a href="https://abdulrhmanx9.vercel.app/" target="_blank"><strong>Live Demo »</strong></a>
 </p>
 
 <p align="center">
@@ -15,8 +11,6 @@
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" />
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" />
   <img src="https://img.shields.io/badge/No_Framework-Static_Site-6c757d?style=flat-square" />
-  <img src="https://img.shields.io/github/stars/Abdulr7man-3laa/Portfolio?style=flat-square" />
-  <img src="https://img.shields.io/github/forks/Abdulr7man-3laa/Portfolio?style=flat-square" />
 </p>
 
 ---
